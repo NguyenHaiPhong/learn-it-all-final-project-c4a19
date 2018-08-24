@@ -87,7 +87,7 @@ def admin_log_out():
 #. Customer profile 
 @lia_app.route("/customer/customer-profile/<customer_id>")
 def customer_profile(customer_id):
-     if "customer_signed_in" in session:
+    if "customer_signed_in" in session:
         customer = User.objects.with_id(customer_id)
         return render_template("detail.html", customer = customer)
     else:
@@ -149,7 +149,7 @@ def course_detail(course_id):
         return ("Khoá học hiện tại không khả dụng.")
 
 #. Customer sign out
-@lia_app.route("customer/customer-sign-out")
+@lia_app.route("/customer/customer-sign-out")
 def customer_sign_out():
     del session["customer_signed_in"]
     return redirect(url_for("homepage"))
