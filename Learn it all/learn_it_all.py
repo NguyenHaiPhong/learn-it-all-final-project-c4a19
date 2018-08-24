@@ -144,7 +144,7 @@ def course_detail(course_id):
             course = all_courses[0]
             return render_template("course-detail.html", course = course)
         else:
-            return redirect(url_for("user_sign_in"))
+            return redirect(url_for("customer_sign_in"))
     elif len(all_courses) == 0:
         return ("Khoá học hiện tại không khả dụng.")
 
