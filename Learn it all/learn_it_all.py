@@ -1,5 +1,5 @@
 import mlab
-from classes.classes import *
+from models.models import *
 from datetime import datetime
 from flask import *
 lia_app = Flask(__name__)
@@ -35,7 +35,7 @@ def admin_sign_in():
             return ("Sai tài khoản.")
 
 #. Show all customers (Admin)
-lia_app.route("/admin/show-all-customers", )
+@lia_app.route("/admin/show-all-customers", )
 def show_all_customers():
     if "admin_signed_in" in session:
         all_customers = User.objects(is_admin = False)
@@ -80,7 +80,7 @@ def update_course(course_id):
 
 #. Admin sign out
 @lia_app.route("/admin/admin-sign-out")
-def admin_log_out():
+def admin_sign_out():
     del session["admin_signed_in"]
     return redirect(url_for("homepage"))
 
@@ -117,7 +117,7 @@ def customer_sign_in():
 
 #. Customer sign up
 @lia_app.route("/customer/customer-sign-up", methods = ["GET", "POST"])
-def user_sign_up():
+def customer_sign_up():
     if request.method == "GET":
         return render_template("user-sign-up.html")
     elif request.method == "POST":
@@ -151,9 +151,11 @@ def course_detail(course_id):
 #. Customer sign out
 @lia_app.route("/customer/customer-sign-out")
 def customer_sign_out():
-    del session["customer_signed_in"]
-    return redirect(url_for("homepage"))
+    if "customer_signed_in" in session:
+        del session['customer_signed_in']
+        return redirect(url_for('homepage.html'))
 
+  
 if __name__ == '__main__':
     lia_app.run(debug=True)
 
