@@ -3,7 +3,7 @@ from datetime import datetime
 
 class User(Document):
     name = StringField(required=True)
-    email = EmailField(required=True)
+    email = StringField(required=True)
     phone_number = StringField()
     sign_in = StringField(required=True, unique=True)
     password = StringField(required=True)
@@ -13,14 +13,18 @@ class User(Document):
 class Course(Document):
     name = StringField(required=True)
     fee = IntField(required=True)
-    content = ListField()
-    time = StringField()
+    content = StringField()
+    time = DateTimeField()
     is_activating = BooleanField(default=True)
 
 class Lecturer(Document):
     name = StringField(required=True)
     email = StringField(required=True)
+    height = IntField()
+    weight = IntField()
+    body_fat = IntField()
     phone_number = StringField()
+    description = ListField()
     specialized = StringField()
 
 class Order(Document):
