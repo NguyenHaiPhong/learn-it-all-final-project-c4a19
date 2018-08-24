@@ -1,5 +1,5 @@
 import mlab
-from classes.classes import *
+from models.classes import *
 from datetime import datetime
 from flask import *
 lia_app = Flask(__name__)
@@ -35,7 +35,7 @@ def admin_sign_in():
             return ("Sai tài khoản.")
 
 #. Show all customers (Admin)
-lia_app.route("/admin/show-all-customers", )
+@lia_app.route("/admin/show-all-customers", )
 def show_all_customers():
     if "admin_signed_in" in session:
         all_customers = User.objects(is_admin = False)
@@ -87,7 +87,7 @@ def admin_log_out():
 #. Customer profile 
 @lia_app.route("/customer/customer-profile/<customer_id>")
 def customer_profile(customer_id):
-     if "customer_signed_in" in session:
+    if "customer_signed_in" in session:
         customer = User.objects.with_id(customer_id)
         return render_template("detail.html", customer = customer)
     else:
@@ -149,11 +149,13 @@ def course_detail(course_id):
         return ("Khoá học hiện tại không khả dụng.")
 
 #. Customer sign out
-@lia_app.route("customer/customer-sign-out")
+@lia_app.route("/customer/customer-sign-out")
 def customer_sign_out():
-    del session["customer_signed_in"]
-    return redirect(url_for("homepage"))
+    if "customer_signed_in" in session:
+        del session['customer_signed_in']
+        return redirect(url_for('homepage.html'))
 
+  
 if __name__ == '__main__':
     lia_app.run(debug=True)
 

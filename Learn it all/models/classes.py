@@ -13,13 +13,13 @@ class User(Document):
 class Course(Document):
     name = StringField(required=True)
     fee = IntField(required=True)
-    content = StringField()
-    time = DateTimeField()
+    content = ListField()
+    time = StringField()
     is_activating = BooleanField(default=True)
 
 class Lecturer(Document):
     name = StringField(required=True)
-    email = EmailField(required=True)
+    email = StringField(required=True)
     phone_number = StringField()
     specialized = StringField()
 
