@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn it all</title>
+    {% include "meta-data.html" %}
+</head>
+<body>
+    {% include "homepage/nav.html" %}
+    <a href="{{ url_for('show_all_courses') }}">Xem danh sách các khoá học</a>
+    <a href="{{ url_for('show_all_customers') }}">Xem danh sách người dùng</a>
+    <a href="{{ url_for('show_all_orders') }}">Xem danh sách yêu cầu</a>
+</body>
+</html>

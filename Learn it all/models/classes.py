@@ -12,9 +12,12 @@ class User(Document):
 
 class Course(Document):
     name = StringField(required=True)
+    level = StringField()
     fee = IntField(required=True)
     content = StringField()
-    time = DateTimeField()
+    detail = ListField()
+    duration = DateTimeField()
+    schedule_time = DateTimeField()
     is_activating = BooleanField(default=True)
 
 class Lecturer(Document):

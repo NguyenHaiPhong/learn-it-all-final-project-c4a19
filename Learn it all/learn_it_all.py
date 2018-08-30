@@ -1,5 +1,5 @@
 import mlab
-from models.models import *
+from models.classes import *
 from datetime import datetime
 from flask import *
 lia_app = Flask(__name__)
@@ -78,6 +78,30 @@ def update_course(course_id):
     elif len(all_courses) == 0:
         return ("Khoá học hiện không còn khả dụng.")
 
+#. Show all orders
+@lia_app.route("/admin/show-all-orders")
+def show_all_orders():
+    if "admin_signed_in" in session:
+        all_orders = Order.objects()
+        return render_template("orders-page.html", all_orders = all_orders)
+    else:   
+        return redirect(url_for("admin_sign_in"))
+
+#. Accept order
+@lia_app.route("/admin/accept-orders/<order_id>/<course_id>")
+def accept_orders(order_id, course_id):
+    if "admin_signed_in" in session:
+        order = Order.objects.with_id(order_id)
+        if len(order) != 0:
+            course = Course.objects.with_id(course_id)
+            if len(course) != 0:
+                order.update(set__is_purchased = True)
+                return ("Đã phê duyệt.")    
+            elif len(course) == 0:
+                return ("Khoá học hiện không còn khả dụng.")
+        elif len(order) == 0:
+            return redirect(url_for(""))
+
 #. Admin sign out
 @lia_app.route("/admin/admin-sign-out")
 def admin_sign_out():
@@ -119,7 +143,7 @@ def customer_sign_in():
 @lia_app.route("/customer/customer-sign-up", methods = ["GET", "POST"])
 def customer_sign_up():
     if request.method == "GET":
-        return render_template("user-sign-up.html")
+        return render_template("customer-sign-up.html")
     elif request.method == "POST":
         form = request.form
         name = form["name"]
@@ -136,7 +160,7 @@ def customer_sign_up():
         return redirect(url_for("customer_sign_in"))
 
 #. Detail Course (Customer)
-@lia_app.route("/customer/detail/<course_id>")
+@lia_app.route("/course/detail/<course_id>")
 def course_detail(course_id):
     all_courses = Course.objects.with_id(course_id)
     if len(all_courses) != 0:
@@ -147,6 +171,23 @@ def course_detail(course_id):
             return redirect(url_for("customer_sign_in"))
     elif len(all_courses) == 0:
         return ("Khoá học hiện tại không khả dụng.")
+
+#. Order course 
+@lia_app.route("/course/order-course/<course_id>/<customer_id>")
+def order_service(course_id, customer_id):
+    if "customer_signed_in" in session:
+        order = Order.objects(course_id = course_id, customer_id = customer_id)
+        if len(order) == 0:
+            new_order = Order(
+                course_id = course_id,
+                customer_id = customer_id,
+                order_time = datetime.now(),
+                is_purchased = False
+            )
+            new_order.save()
+            return ("Đã gửi yêu cầu.")
+        elif len(order) != 0:
+            return ("Bạn đã gửi yêu cầu. Xin chờ xác nhận.")
 
 #. Customer sign out
 @lia_app.route("/customer/customer-sign-out")
