@@ -155,7 +155,50 @@ def customer_sign_out():
         del session['customer_signed_in']
         return redirect(url_for('homepage.html'))
 
-  
+
+@lia_app.route("/esport")
+def esport():
+    return render_template('esport.html')
+
+# route PES
+@lia_app.route('/esport/pes')
+def pes():
+   return render_template ('what-is-pes.html')
+
+@lia_app.route('/pes/basic')
+def basic_learning_pes():
+    return render_template('basic-learning-pes.html')
+    
+# route DOTA2
+@lia_app.route('/esport/dota2')
+def dota2():
+    return render_template('what-is-dota2.html')
+
+@lia_app.route('/dota2/basic')
+def basic_learning_dota2():
+    return render_template('basic-learning-dota2.html')
+
+# route LOL
+@lia_app.route('/esport/lol')
+def lol():
+    return render_template('what-is-lol.html')
+
+@lia_app.route('/dota2/lol')
+def basic_learning_lol():
+    return render_template ('basic-learning-lol.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     lia_app.run(debug=True)
 

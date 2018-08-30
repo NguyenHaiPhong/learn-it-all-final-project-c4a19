@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-from mongoengine import *
 from models.models import *
-from datetime import datetime
-from faker import Faker as fake
-import mlab
-
-mlab.connect()
-
-new_admin = User(
-    name = "admin",
-    email = "thelivingdeath.n2h.destroyer@gmail.com",
-    phone_number = "123456789",
-    sign_in = "admin",
-    password = "admin",    
-    is_activating = True,
-    is_admin = True
-)
-new_admin.save()
-=======
-from models.classes import *
 import mlab
 from pymongo import *
 from random import choice
@@ -31,8 +11,10 @@ basic_course = Course(
     
     name = "Basic",
     fee = 20,
-    content = ('Bạn sẽ được xem các video cơ bản từ các giảng viên chất lượng nhất hệ mặt trời','Cung cấp cho bạn bộ giáo trình cơ bản về môn học mà bạn chọn'),
-    time = "1 Buổi",
+    content = ('Bạn sẽ được xem các video cơ bản từ các giảng viên chất lượng nhất hệ mặt trời',
+    'Cung cấp cho bạn bộ giáo trình cơ bản về môn học mà bạn chọn', ''
+    ),
+    time = "3 Buổi",
     is_activating = False
 )
 basic_course.save()
@@ -40,11 +22,12 @@ basic_course.save()
 intensive_course = Course(
     name = "Intensive",
     fee = 50,
-    time = "4 Buổi",
-    content = ['Bạn sẽ được tương tác với giảng viên cùng các học viên khác thông qua lớp học Online',
+    time = "7 Buổi",
+    content = (['Bạn sẽ được tương tác với giảng viên cùng các học viên khác thông qua lớp học Online',
         'Cung cấp cho bạn bộ giáo trình cơ bản về môn học mà bạn chọn',
+        'Từ đó bạn có thể tự luyện tập với máy ở chế độ AI và phát triển bản thân những kỹ năng riêng biệt của mình'
         
-        ],
+        ]),
     is_activating = False
 )
 intensive_course.save()
@@ -52,8 +35,11 @@ intensive_course.save()
 advance_course = Course(
     name = "Advance",
     fee = 100,
-    time = "7 Buổi",
-    content = ['Combat 1 vs 1 cùng giảng viên', 'Trao đổi tự do thoải mái không giới hạn'],
+    time = "14 Buổi",
+    content = ['Combat 1 vs 1 cùng giảng viên', 'Trao đổi tự do thoải mái không giới hạn','Trong các giờ học sẽ tổ chức các cặp thi đấu với nhau',
+    'Hướng dẫn cơ bản và các kỹ năng cao cấp và sắp xếp các chế độ chơi giữa các học viên với nhau, từ đó học viên sẽ cải thiện được bản thân về lối chơi, chiến thuật riêng mình',
+    'khi bạn bước ra khỏi lớp học sẽ tự tin đi du đấu với những người chơi khác để nâng cao level'    
+    ],
     is_activating = False
 )
 advance_course.save()
@@ -101,4 +87,3 @@ art_lecturer = Lecturer(
     specialized = 'Art'
 )
 art_lecturer.save()
->>>>>>> 662969166b5ada05cb6cebce2e5c90bd50ee5dc1

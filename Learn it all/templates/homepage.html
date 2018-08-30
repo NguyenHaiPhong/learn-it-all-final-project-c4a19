@@ -24,6 +24,7 @@
 
     <!-- Custom CSS -->
     <link href="../static/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="../static/css/stylish-portfolio.css" rel="stylesheet">
 </head>
 <body id="page-top">
 
@@ -113,7 +114,7 @@
           <em>dành riêng cho bạn</em></h2>
         <a class="btn btn-primary btn-xl btn-lg" href="#">Sport Courses</a>
         <a class="btn btn-primary btn-xl btn-lg" href="#">Music Courses</a>
-        <a class="btn btn-primary btn-xl btn-lg" href="#">E-Sport Courses</a>
+        <a class="btn btn-primary btn-xl btn-lg" href="{{url_for('esport')}}">E-Sport Courses</a>
       </div>
     </section>
 
@@ -148,11 +149,12 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a class="portfolio-item" href="#">
+            <a class="portfolio-item" href="{{url_for('esport')}}">
               <span class="caption">
                 <span class="caption-content">
                   <h2>E-sport</h2>
                   <p class="mb-0">LOL, Dota, PES... mọi thứ đều có thể nếu bạn nghiêm túc tìm hiểu, nghiên cứu</p>
+                  
                 </span>
               </span>
               <img class="img-fluid" src="../static/image/homepage/portfolio-3.jpg" alt="">
@@ -233,8 +235,4 @@
 
   </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 0d438698c8bbfb3a9afeccb1ebd0648a61c1bfc6

@@ -4,72 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Learn it all</title>
+    <title>Leage Of Legends</title>
     {% include "meta-data.html" %}
 </head>
-<body>
+<body class="bg-cont">
     {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
-    {% endif %}
-    <h1>Liên Minh Huyền Thoại</h1>
-    <h2>Giới thiệu</h2>
-        <p>
-            Liên Minh Huyền Thoại (viết tắt: LMHT, tiếng Anh: League of Legends, viết tắt tiếng Anh: LOL) là một trò chơi video đấu trường trận
-            chiến trực tuyến nhiều người chơi (MOBA - Multiplayer Online Battlefield Arena) được Riot Games phát triển và phát hành cho hệ điều 
-            hành Microsoft Windows và Mac OS X, lấy cảm hứng từ mod Defense of the Ancients cho trò chơi video Warcraft III: Frozen Throne. Nó là 
-            một trò chơi được chơi miễn phí và được hỗ trợ bởi các vi giao dịch (micro-transaction). Trò chơi được công bố đầu tiên vào ngày 7
-            tháng 10 năm 2008 và phát hành vào ngày 27 tháng 10 năm 2009. Kể từ khi phát hành, Liên Minh Huyền Thoại được đón nhận rất tích cực, 
-            và trở nên phổ biến trong những năm sau đó. Theo một bài báo của Forbes năm 2012, Liên Minh Huyền Thoại là trò chơi máy tính được chơi 
-            nhiều nhất ở Bắc Mỹ và Châu Âu về số giờ chơi. Đến tháng 1 năm 2014, có 67 triệu người chơi Liên Minh Huyền Thoại mỗi tháng, 27 triệu 
-            người mỗi ngày, và hơn 7,5 triệu người cùng lúc trong những thời điểm cao nhất.
-            <br>
-            Trong Liên Minh Huyền Thoại, mỗi người chơi được gọi là một "triệu hồi sư" (summoner), điều khiển một nhân vật, gọi là "tướng" 
-            (Champion - phân biệt với Hero trong DOTA và God trong SMITE), để đối đầu với một đội những người chơi khác hoặc các đối thủ máy tính. 
-            Trong chế độ chơi truyền thống, mục tiêu cuối cùng của một đội là phá hủy nhà chính của đội đối phương – công trình nằm trong lòng căn 
-            cứ của đối phương và được những công trình khác bảo vệ. Mỗi ván chơi Liên Minh Huyền Thoại đều riêng biệt nhau, người chơi bắt đầu với 
-            cùng lượng tiền khởi điểm, với các tướng đều tương đối yếu, rồi dần dần tăng lên sức mạnh qua lượng tiền và kinh nghiệm thu được trong 
-            suốt ván chơi.
-            <br>
-            Liên Minh Huyền Thoại đã trở nên phổ biến và xây dựng được những môi trường thi đấu cạnh tranh cao. Tại Bắc Mỹ và Châu Âu, Riot Games 
-            tổ chức League of Legends Championship Series (LCS). Những giải đấu vùng khác cũng được tổ chức ở Trung Quốc (LPL), Hàn Quốc (LCK), 
-            Đài Loan - Hồng Kông - Ma Cao (LMS), Đông Nam Á (GPL), Việt Nam (VCS), Nhật Bản (LJL), châu Đại Dương (OPL), Thổ Nhĩ Kỳ (TCL), các 
-            nước CIS (LCL), Bắc Mỹ Latinh (LNN), Nam Mỹ Latinh (CLS), Brasil (CBLOL) (tùy theo vị trí địa lý và trình độ người chơi tại đó). 
-            Những giải đấu vùng này chọn ra những đội tuyển xuất sắc nhất các khu vực để tham dự Mid-Season Invitational và Chung kết thế giới.
-        </p>
-    <h2>Cách chơi</h2>
-        <p>
-            Liên Minh Huyền Thoại là một trò chơi đấu trường trận chiến trực tuyến nhiều người chơi (MOBA) mà người chơi có thể điều khiển một 
-            "tướng" để đối đầu với một đội những người chơi khác hoặc các trận đấu với máy. Tính đến tháng 6 năm 2018, có tổng cộng 141 vị tướng 
-            khác nhau được phân loại theo vai trò là sát thủ, đấu sĩ, đỡ đòn, xạ thủ, pháp sư hay hỗ trợ.
-            <br>
-            Người chơi lên cấp độ bằng cách hạ gục các tướng của phe địch được điều khiển bởi người chơi khác hoặc đối thủ máy, cũng như các quân 
-            lính liên tục xuất hiện trong trò chơi, hay tấn công trụ của phe địch. Trong chế độ chơi truyền thống, bản đồ được chia ra thành ba 
-            đường chính là đường đi của quân lính; khu rừng là khoảng giữa các đường, nơi có các bãi quái rừng; và khu vực nhà chính nơi người 
-            chơi xuất hiện và mua trang bị. Các đường chính bao gồm đường trên, đường giữa và đường dưới, phù hợp với các kiểu tướng nhất định. 
-            Đôi khi khu rừng cũng được coi là một đường (đường rừng), với những người chơi tướng đi rừng sẽ rảo quanh các bãi quái rừng để thu 
-            thập các bùa lợi và hỗ trợ cho các đường chính khác. Người chơi nhận được một lượng tiền nhỏ theo thời gian, và có thể kiếm nhiều tiền 
-            hơn từ việc giết quân lính địch bằng đòn đánh kết liễu, phá hủy trụ địch, giết quái vật rừng cũng như giết tướng địch, hỗ trợ đồng đội 
-            giết tướng địch và phá trụ. Với số tiền này, người chơi mua các trang bị cho tướng của mình để các tướng mạnh mẽ hơn trong suốt trận đấu. 
-            Trong các bản đồ Summoner's Rift, Twisted Treeline, The Crystal Scar và Howling Abyss, trò chơi kết thúc khi một đội phá hủy được nhà 
-            chính của đội kia, hoặc là đội kia đầu hàng. Các bản đồ khác có luật chơi và mục tiêu khác nhau, chẳng hạn nhà chính ở Crystal Scar 
-            sẽ mất máu nếu đội đối phương kiểm soát ít nhất 3 trong 5 trụ quanh bản đồ. Tuy nhiên, bản đồ The Crystal Scar đã bị đóng lại vĩnh viễn 
-            vào ngày 22/2/2016 với lý do các tướng trong chế độ chơi này bị mất cân bằng quá lớn về kĩ năng lẫn các chỉ số và lối chơi. Hơn nữa, hầu 
-            như không có ai chơi chế độ này - chỉ 0,5% trong tổng số hơn 40 triệu người chơi trên toàn thế giới chơi nó.
-            <br>
-            Cửa hàng của trò chơi Liên Minh Huyền Thoại cho phép người chơi mua vật dụng bằng "điểm Riot" (Riot Points – RP) và "điểm ảnh hưởng" 
-            (Influence Points – IP). RP phải mua bằng tiền thật, còn IP kiếm được từ mỗi trận đấu của trò chơi hoặc được thưởng từ các sự kiện khác. 
-            Từ năm 2018, IP chuyển thành "Tinh hoa Lam" (bản tiếng Anh goi là "Blue Essence" - BE).
-            <br>
-            Người chơi được coi là một "triệu hồi sư" (Summoner) và giữ vai trò lâu dài trong suốt trò chơi. Các thống kê và điểm số của người chơi 
-            được lưu giữ và có thể xem được. Người chơi nhận được điểm kinh nghiệm sau mỗi trận đấu họ tham gia. Người chơi nhận được điểm kinh nghiệm 
-            đến cấp độ 30. Cho đến ngày 8/11/2017, giới hạn cấp độ bị loại bỏ. Người chơi có thể kiếm điểm kinh nghiệm và thăng cấp, mỗi một cấp tăng 
-            lên người chơi có thể nhận được phần thưởng là Tinh hoa Lam, thứ đã được thay thế cho IP (Điểm ảnh hưởng) và được sử dụng trong cửa hàng 
-            cũng như Chế Tạo Hextech.
-            <br>
-            Đây là một game Play-to-win bởi vì hệ thống ngọc và tướng đều được mua bằng IP Cũng bắt đầu từ ngày 8/11/2017, hệ thống Ngọc và Bảng Bổ trợ từ mùa 7 bị xóa bỏ hoàn toàn. Hệ thống trước-trận (before-game) mới này được gọi là Ngọc Tái Tổ Hợp được sử dụng vào mùa giải xếp hạng thứ 8. Người chơi có thể chọn bảng ngọc gồm hai hệ Chính và Phụ, mỗi hệ có thể chọn trong 5 hệ là Kiên Định, Cảm Hứng, Áp Đảo, Pháp Thuật và Chuẩn Xác. Sau khi chọn hệ chính, người chơi có thể chọn 1 trong 3 ngọc Siêu Cấp của hệ chính đó, tiếp theo chọn 3 trong 9 ngọc phụ của hệ, với ba nhánh khác nhau. Sau khi thiết lập hệ chính, người chơi có thể chọn 1 hệ phụ trong 4 hệ còn lại và chọn 2 trong 9 ngọc phụ của hệ phụ đó. Kết hợp hai hệ người chơi còn có thêm thuộc tính thưởng thêm phụ thuộc vào hệ chính. 
-            Ngọc Tái Tổ Hợp miễn phí với tất cả người chơi và không yêu cầu cấp độ để sử dụng, các Phép Bổ trợ vẫn được giữ nguyên.
-        </p>
+    {% endif %} 
+    <div class="d-flex justify-content-center"><img src="../static/image/Esport/Liên Minh Huyền Thoại/lol cover.jpg" class="img-thumbnail"></div>
+    <div class="container">
+        <h1 class="text-center">Liên Minh Huyền Thoại</h1>
+        <h2>Giới thiệu</h2>
+            <p class="f-milu">
+                Liên Minh Huyền Thoại (viết tắt: LMHT, tiếng Anh: League of Legends, viết tắt tiếng Anh: LOL) là một trò chơi video đấu trường trận
+                chiến trực tuyến nhiều người chơi (MOBA - Multiplayer Online Battlefield Arena) được Riot Games phát triển và phát hành cho hệ điều 
+                hành Microsoft Windows và Mac OS X, lấy cảm hứng từ mod Defense of the Ancients cho trò chơi video Warcraft III: Frozen Throne. Nó là 
+                một trò chơi được chơi miễn phí và được hỗ trợ bởi các vi giao dịch (micro-transaction). Trò chơi được công bố đầu tiên vào ngày 7
+                tháng 10 năm 2008 và phát hành vào ngày 27 tháng 10 năm 2009. Kể từ khi phát hành, Liên Minh Huyền Thoại được đón nhận rất tích cực, 
+                và trở nên phổ biến trong những năm sau đó. Theo một bài báo của Forbes năm 2012, Liên Minh Huyền Thoại là trò chơi máy tính được chơi 
+                nhiều nhất ở Bắc Mỹ và Châu Âu về số giờ chơi. Đến tháng 1 năm 2014, có 67 triệu người chơi Liên Minh Huyền Thoại mỗi tháng, 27 triệu 
+                người mỗi ngày, và hơn 7,5 triệu người cùng lúc trong những thời điểm cao nhất.
+                <br>
+                Trong Liên Minh Huyền Thoại, mỗi người chơi được gọi là một "triệu hồi sư" (summoner), điều khiển một nhân vật, gọi là "tướng" 
+                (Champion - phân biệt với Hero trong DOTA và God trong SMITE), để đối đầu với một đội những người chơi khác hoặc các đối thủ máy tính. 
+                Trong chế độ chơi truyền thống, mục tiêu cuối cùng của một đội là phá hủy nhà chính của đội đối phương – công trình nằm trong lòng căn 
+                cứ của đối phương và được những công trình khác bảo vệ. Mỗi ván chơi Liên Minh Huyền Thoại đều riêng biệt nhau, người chơi bắt đầu với 
+                cùng lượng tiền khởi điểm, với các tướng đều tương đối yếu, rồi dần dần tăng lên sức mạnh qua lượng tiền và kinh nghiệm thu được trong 
+                suốt ván chơi.
+                <br>
+                Liên Minh Huyền Thoại đã trở nên phổ biến và xây dựng được những môi trường thi đấu cạnh tranh cao. Tại Bắc Mỹ và Châu Âu, Riot Games 
+                tổ chức League of Legends Championship Series (LCS). Những giải đấu vùng khác cũng được tổ chức ở Trung Quốc (LPL), Hàn Quốc (LCK), 
+                Đài Loan - Hồng Kông - Ma Cao (LMS), Đông Nam Á (GPL), Việt Nam (VCS), Nhật Bản (LJL), châu Đại Dương (OPL), Thổ Nhĩ Kỳ (TCL), các 
+                nước CIS (LCL), Bắc Mỹ Latinh (LNN), Nam Mỹ Latinh (CLS), Brasil (CBLOL) (tùy theo vị trí địa lý và trình độ người chơi tại đó). 
+                Những giải đấu vùng này chọn ra những đội tuyển xuất sắc nhất các khu vực để tham dự Mid-Season Invitational và Chung kết thế giới.
+            </p>
+            <div class="d-flex justify-content-around">
+                <a href="{{url_for('basic_learning_lol')}}" class="btn btn-primary">Nếu bạn đã sẵn sàng thì để chúng tôi giúp bạn nhé!</a>
+                <a href="{{url_for('esport')}}" class="btn btn-primary">Quay lại E-Sport</a>
+            </div>
+        </div>
 </body>
+{% include 'homepage/footer.html'%}
 </html>
