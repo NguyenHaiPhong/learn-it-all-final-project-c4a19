@@ -120,14 +120,15 @@ def customer_profile(customer_id):
 #. Customer sign in
 @lia_app.route("/customer/customer-sign-in", methods = ["GET", "POST"])
 def customer_sign_in():
+    error = None
     if request.method == "GET":  
         if "customer_signed_in" in session:
-            return redirect(url_for("customer_profile"))
+            return redirect(url_for("homepage"))
         else:
             return render_template("customer-sign-in.html")
     elif request.method == "POST":
         form = request.form
-        sign_in = form["sign_in"]
+        sign_in = form["name"]
         password = form["password"]
         all_customers = User.objects(sign_in__exact = sign_in, 
         password__exact = password, is_admin = False)
@@ -135,41 +136,57 @@ def customer_sign_in():
             customer_id = all_customers[0].id
             session["customer_signed_in"] = True
             session["customer_signed_in_id"] = str(customer_id)
-            return redirect(url_for("customer_profile"))
+            return redirect(url_for("homepage"))
         elif len(all_customers) == 0:
-            return ("Sai tài khoản.")
+            # flash('Wrong username or password')
+            error = 'Sai Tài Khoản'
+            
+    return render_template('customer-sign-in.html', error = error)
+            
 
 #. Customer sign up
 @lia_app.route("/customer/customer-sign-up", methods = ["GET", "POST"])
 def customer_sign_up():
+    error = None
     if request.method == "GET":
+        
         return render_template("customer-sign-up.html")
     elif request.method == "POST":
+        
         form = request.form
         name = form["name"]
         email = form["email"]
-        sign_up = form["sign-up"]
+        sign_up = form["sign_up"]
         password = form["password"]
+        
         new_customer = User(
             name = name,
             email = email,
             sign_in = sign_up,
             password = password,
         )
+        # print(new_customer)
         new_customer.save()
+
         return redirect(url_for("customer_sign_in"))
+
+# Info Course
+@lia_app.route("/course_info/")
+def course_info():
+    
+    return render_template("course_info.html")
 
 #. Detail Course (Customer)
 @lia_app.route("/course/detail/<course_id>")
 def course_detail(course_id):
-    all_courses = Course.objects.with_id(course_id)
-    if len(all_courses) != 0:
+    # all_courses = Course.objects.with_id(course_id)
+    course = Course.objects.with_id(course_id)
+    if len(course) != 0:
         if "customer_signed_in" in session:
-            course = all_courses[0]
-            return render_template("course-detail.html", course = course)
+            return render_template("course_detail.html", course = course)
         else:
             return redirect(url_for("customer_sign_in"))
-    elif len(all_courses) == 0:
+    elif len(course) == 0:
         return ("Khoá học hiện tại không khả dụng.")
 
 #. Order course 
@@ -194,7 +211,7 @@ def order_service(course_id, customer_id):
 def customer_sign_out():
     if "customer_signed_in" in session:
         del session['customer_signed_in']
-        return redirect(url_for('homepage.html'))
+        return redirect(url_for('homepage'))
 
 
 @lia_app.route("/esport")
@@ -228,6 +245,11 @@ def lol():
 def basic_learning_lol():
     return render_template ('basic-learning-lol.html')
 
+
+# route Music
+@lia_app.route('/music')
+def music():
+    return render_template('music-course.html')
 
 
 

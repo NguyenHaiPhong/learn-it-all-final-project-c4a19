@@ -7,7 +7,7 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body id="LoginForm">
+<body id="LoginForm" class="bg-cont">
     {% include "homepage/nav.html" %}
     <div class="container">
         <h1 class="form-heading text-center">Đăng nhập</h1>
@@ -24,6 +24,9 @@
                             <div class="form-group">
                                 <input type="password"  name="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
                             </div>
+                            {% if error %}
+                                <p class="error text-danger"><strong>Error:</strong> {{error}}
+                            {% endif %}
                             <div class="forgot">
                                 <a href="#">Quên mật khẩu?</a>
                             </div>

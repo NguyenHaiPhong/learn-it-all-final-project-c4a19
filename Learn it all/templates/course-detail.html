@@ -7,21 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="main.js"></script>
-  {% include 'meta-data.html'%}
+  {% include 'meta-data.html' %}
 </head>
 <body>
+  {% include 'meta-data.html' %}
   <div>
-    <h1>Hello World</h1>
-    {%for course in all_courses%}
-      <div>
-        <p>Name: {{all_course.name}}</p>
-        <p>Fee: {{all_course.fee}}</p>
-        <p>Content: {{all_course.content}}</p>
-        <p>Time: {{all_course.time}}</p>
-        <p>Status: {{"Khả Dụng" if all_course.is_activating else "Không khả dụng"}}</p>
-        <p></p>
-      </div>
-    {%endfor%}
   </div>
 </body>
 </html>

@@ -24,16 +24,16 @@
 
     <!-- Custom CSS -->
     <link href="../static/css/stylish-portfolio.min.css" rel="stylesheet">
-<<<<<<< HEAD
-    <link href="../static/css/stylish-portfolio.css" rel="stylesheet">
-=======
     <link rel="stylesheet" href="../static/css/stylish-portfolio.css">
->>>>>>> 47ee2b27e3789bdb763e3dd7ee82529a3a395a20
 </head>
 <body id="page-top">
 
     <!-- Navigation -->
+    {% if session["customer_signed_in"] == True %}
+    {% include "homepage/customer-signed-in-nav.html" %}
+    {% else %}
     {% include "homepage/nav.html" %}
+    {% endif %}
 
     <!-- Header -->
     <header class="masthead d-flex">
@@ -116,7 +116,7 @@
         <div class="container text-center">
         <h2 class="mx-auto mb-5">Đăng ký khóa học
           <em>dành riêng cho bạn</em></h2>
-        <a class="btn btn-primary btn-xl btn-lg" href="#">Sport Courses</a>
+        <a class="btn btn-primary btn-xl btn-lg" href="{{url_for('course_info')}}">Sport Courses</a>
         <a class="btn btn-primary btn-xl btn-lg" href="#">Music Courses</a>
         <a class="btn btn-primary btn-xl btn-lg" href="{{url_for('esport')}}">E-Sport Courses</a>
       </div>
