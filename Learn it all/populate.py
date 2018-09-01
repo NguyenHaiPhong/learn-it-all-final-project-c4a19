@@ -17,31 +17,41 @@ mlab.connect()
 # )
 # new_admin.save()
 
-   name = StringField(required=True)
-    level = StringField()
-    fee = IntField(required=True)
-    content = StringField()
-    detail = ListField()
-    duration = DateTimeField()
-    schedule_time = DateTimeField()
-    is_activating = BooleanField(default=True)
+# new_course = Course(
+#     name = "Học guitar",
+#     level = "Basic",
+#     fee = 600000,
+#     detail = [
+#         {
+#             "Bài 1": "Guitar Basics",
+#             "link": "https://www.youtube.com/watch?v=3vJw4S_9uWM"
+#         },
+#         {
+#             "Bài 2": "How to Play Guitar Chords",
+#             "link": "https://www.youtube.com/watch?v=jCG3YgSSqbQ"
+#         },
+#         {
+#             "Bài 3": "How to Change Chords",
+#             "link": "https://www.youtube.com/watch?v=q9ThDTiuyFE"
+#         }
+#     ],
+#     duration = "haha",
+#     schedule_time = "haha",
+#     is_activating = True,
+#     category_id = "5b8949f3fd2b0f1d48f368e3",
+# )
+# new_course.save()
 
-new_course = Course(
-    name = "Học guitar",
-    level = "Basic",
-    fee = 600000,
-    content = "học guitar cơ bản",
-    detail =  [
-        {
-            "Bài 1": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 1.",
-            "link": "https://www.youtube.com/watch?v=bUaFlTUkL8E" 
-        },
-        {
-        "Bài 2": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 2.",
-        "link": "https://www.youtube.com/watch?v=MntHf8bdL4s"
-        }   
-    ],
-    schedule_time = 2018,
-    is_activating = True
+# new_category = Category(
+#     name = "Music"
+# )
+# new_category.save()
+
+new_lecturer = Lecturer(
+    name = "Nguyễn Hải Phong",
+    email = "phong@gmail.com",
+    description = ["Sinh viên năm 2 Cao Đẳng Nghệ thuật Hà Nội"],
+    category_id = "5b8949f3fd2b0f1d48f368e3",
+    course_id = "5b894c7afd2b0f15009135f1"
 )
-new_course.save()
+new_lecturer.save()

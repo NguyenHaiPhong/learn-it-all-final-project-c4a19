@@ -2,7 +2,7 @@ from mongoengine import *
 from datetime import datetime
 
 class User(Document):
-    name = StringField(required=True)
+    name = StringField()
     email = StringField(required=True)
     phone_number = StringField()
     sign_in = StringField(required=True, unique=True)
@@ -10,15 +10,18 @@ class User(Document):
     is_activating = BooleanField(default=False)
     is_admin = BooleanField(default=False)
 
+class Category(Document):
+    name = StringField()
+
 class Course(Document):
     name = StringField(required=True)
     level = StringField()
     fee = IntField(required=True)
-    content = StringField()
     detail = ListField()
-    duration = DateTimeField()
-    schedule_time = DateTimeField()
+    duration = StringField()
+    schedule_time = StringField()
     is_activating = BooleanField(default=True)
+    category_id = ReferenceField(Category)
 
 class Lecturer(Document):
     name = StringField(required=True)
@@ -28,7 +31,8 @@ class Lecturer(Document):
     body_fat = IntField()
     phone_number = StringField()
     description = ListField()
-    specialized = StringField()
+    category_id = ReferenceField(Category)
+    course_id = ReferenceField(Course)
 
 class Order(Document):
     customer_id = ReferenceField(User)

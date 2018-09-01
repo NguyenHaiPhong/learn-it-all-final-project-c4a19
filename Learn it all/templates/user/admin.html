@@ -9,11 +9,14 @@
 </head>
 <body>
     {% if session["user_signed_in"] == True %}
-    {% include "homepage/user-signed-in-nav.html" %}
+    {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    {% for course in all_basic_courses %}
-    
+    <a href="#">Xem danh sách các khoá học</a>
+    <br>
+    <a href="#">Xem danh sách người dùng</a>
+    <br>
+    <a href="#">Xem danh sách yêu cầu</a>
 </body>
 </html>

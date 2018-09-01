@@ -5,15 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Learn it all</title>
-    {% include "meta-data.html" %}
 </head>
 <body>
-    {% if session["user_signed_in"] == True %}
-    {% include "homepage/user-signed-in-nav.html" %}
-    {% else %}
-    {% include "homepage/nav.html" %}
-    {% endif %}
-    {% for course in all_basic_courses %}
     
 </body>
 </html>

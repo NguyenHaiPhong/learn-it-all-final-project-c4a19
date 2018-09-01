@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn it all</title>
+    {% include "meta-data.html" %}
+</head>
+<body>
+    {% if session["user_signed_in"] == True %}
+    {% include "homepage/user-signed-in-nav.html" %}
+    {% else %}
+    {% include "homepage/nav.html" %}
+    {% endif %}
+    <section class="callout">
+        <div class="container text-center">
+            <h2 class="mx-auto mb-5">Đăng ký khóa học
+                <em>dành riêng cho bạn</em></h2>
+                <a class="btn btn-primary btn-xl btn-lg" href="">Sport Courses</a>
+                <a class="btn btn-primary btn-xl btn-lg" href="{{ url_for('course_info', music_id = music.id) }}">Music Courses</a>
+                <a class="btn btn-primary btn-xl btn-lg" href="#">E-Sport Courses</a>
+        </div>
+        </section>
+</body>
+</html>

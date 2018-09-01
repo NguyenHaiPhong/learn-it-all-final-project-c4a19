@@ -8,9 +8,15 @@
     {% include "meta-data.html" %}
 </head>
 <body>
+    {% if session["user_signed_in"] == True %}
+    {% include "homepage/user-signed-in-nav.html" %}
+    {% else %}
     {% include "homepage/nav.html" %}
-    <a href="{{ url_for('show_all_courses') }}">Xem danh sách các khoá học</a>
-    <a href="{{ url_for('show_all_customers') }}">Xem danh sách người dùng</a>
-    <a href="{{ url_for('show_all_orders') }}">Xem danh sách yêu cầu</a>
+    {% endif %}
+    <h1>Guitar</h1>
+        <h2>Giới thiệu</h2>
+            <p>
+                
+            </p>
 </body>
 </html>
