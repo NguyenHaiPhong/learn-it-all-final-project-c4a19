@@ -98,6 +98,17 @@
       </div>
     </section>
 
+    <!-- Callout -->
+      <section class="callout">
+        <div class="container text-center">
+        <h2 class="mx-auto mb-5">Đăng ký khóa học
+          <em>dành riêng cho bạn</em></h2>
+        <a class="btn btn-primary btn-xl btn-lg" href="{{url_for('course_info')}}">Sport Courses</a>
+        <a class="btn btn-primary btn-xl btn-lg" href="#">Music Courses</a>
+        <a class="btn btn-primary btn-xl btn-lg" href="{{url_for('esport')}}">E-Sport Courses</a>
+      </div>
+    </section>
+
     <!-- Portfolio -->
     <section class="content-section" id="portfolio">
       <div class="container">
@@ -129,11 +140,12 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a class="portfolio-item" href="#">
+            <a class="portfolio-item" href="{{url_for('esport')}}">
               <span class="caption">
                 <span class="caption-content">
                   <h2>E-sport</h2>
                   <p class="mb-0">LOL, Dota, PES... mọi thứ đều có thể nếu bạn nghiêm túc tìm hiểu, nghiên cứu</p>
+                  
                 </span>
               </span>
               <img class="img-fluid" src="../static/image/Homepage/portfolio-3.jpg" alt="">

@@ -12,9 +12,17 @@
     width: 100%;
     height: 100%;
 }
-.
 .f-milu{
     font-family: 'Muli', sans-serif;
+
+}
+
+.f-bungee{
+    font-family: 'Bungee', cursive;
+}
+
+.f-bungee-shade{
+    font-family: 'Bungee Shade', cursive;
 }
 
 .p-absolate{

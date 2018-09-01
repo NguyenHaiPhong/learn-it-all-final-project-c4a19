@@ -133,42 +133,73 @@ def accept_orders(order_id, course_id):
             return redirect(url_for(""))
 
 #. Customer profile 
-@lia_app.route("/user/customer/customer-profile")
-def customer_profile():  
+@lia_app.route("/customer/customer-profile/<customer_id>")
+def customer_profile(customer_id):
+    if "customer_signed_in" in session:
+        customer = User.objects.with_id(customer_id)
+        return render_template("detail.html", customer = customer)
+    else:
+        return redirect(url_for("customer_sign_in"))
+
+#. Customer sign in
+@lia_app.route("/customer/customer-sign-in", methods = ["GET", "POST"])
+def customer_sign_in():
+    error = None
+    if request.method == "GET":  
         if "customer_signed_in" in session:
-            return render_template("customer-profile.html")
+            return redirect(url_for("homepage"))
         else:
             return render_template("customer-sign-in.html")
+    elif request.method == "POST":
+        form = request.form
+        sign_in = form["name"]
+        password = form["password"]
+        all_customers = User.objects(sign_in__exact = sign_in, 
+        password__exact = password, is_admin = False)
+        if len(all_customers) != 0:
+            customer_id = all_customers[0].id
+            session["customer_signed_in"] = True
+            session["customer_signed_in_id"] = str(customer_id)
+            return redirect(url_for("homepage"))
+        elif len(all_customers) == 0:
+            # flash('Wrong username or password')
+            error = 'Sai Tài Khoản'
+            
+    return render_template('customer-sign-in.html', error = error)
+            
 
 #. Customer sign up
 @lia_app.route("/user-sign-up", methods = ["GET", "POST"])
 def customer_sign_up():
+    error = None
     if request.method == "GET":
         return render_template("customer-sign-up.html")
     elif request.method == "POST":
         form = request.form
-        sign_up = form["sign-up"]
+        name = form["name"]
         email = form["email"]
+        sign_up = form["sign_up"]
         password = form["password"]
         new_customer = User(
             sign_in = sign_up,
             email = email,
             password = password,
         )
+        # print(new_customer)
         new_customer.save()
         return redirect(url_for("customer_sign_in"))
 
 #. Detail Course (Customer)
 @lia_app.route("/course/detail/<course_id>")
 def course_detail(course_id):
-    all_courses = Course.objects.with_id(course_id)
-    if len(all_courses) != 0:
+    # all_courses = Course.objects.with_id(course_id)
+    course = Course.objects.with_id(course_id)
+    if len(course) != 0:
         if "customer_signed_in" in session:
-            course = all_courses[0]
-            return render_template("course-detail.html", course = course)
+            return render_template("course_detail.html", course = course)
         else:
             return redirect(url_for("customer_sign_in"))
-    elif len(all_courses) == 0:
+    elif len(course) == 0:
         return ("Khoá học hiện tại không khả dụng.")
 
 #. Order course 
@@ -191,10 +222,59 @@ def order_service(course_id, customer_id):
 #. Customer sign out
 @lia_app.route("/customer/customer-sign-out")
 def customer_sign_out():
-    if "user_signed_in" in session:
-        del session['user_signed_in']
-        return redirect(url_for("homepage"))
-  
+    if "customer_signed_in" in session:
+        del session['customer_signed_in']
+        return redirect(url_for('homepage'))
+
+
+@lia_app.route("/esport")
+def esport():
+    return render_template('esport.html')
+
+# route PES
+@lia_app.route('/esport/pes')
+def pes():
+   return render_template ('what-is-pes.html')
+
+@lia_app.route('/pes/basic')
+def basic_learning_pes():
+    return render_template('basic-learning-pes.html')
+    
+# route DOTA2
+@lia_app.route('/esport/dota2')
+def dota2():
+    return render_template('what-is-dota2.html')
+
+@lia_app.route('/dota2/basic')
+def basic_learning_dota2():
+    return render_template('basic-learning-dota2.html')
+
+# route LOL
+@lia_app.route('/esport/lol')
+def lol():
+    return render_template('what-is-lol.html')
+
+@lia_app.route('/dota2/lol')
+def basic_learning_lol():
+    return render_template ('basic-learning-lol.html')
+
+
+# route Music
+@lia_app.route('/music')
+def music():
+    return render_template('music-course.html')
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     lia_app.run(debug=True)
 

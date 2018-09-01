@@ -17,41 +17,39 @@ mlab.connect()
 # )
 # new_admin.save()
 
-# new_course = Course(
-#     name = "Học guitar",
-#     level = "Basic",
-#     fee = 600000,
-#     detail = [
-#         {
-#             "Bài 1": "Guitar Basics",
-#             "link": "https://www.youtube.com/watch?v=3vJw4S_9uWM"
-#         },
-#         {
-#             "Bài 2": "How to Play Guitar Chords",
-#             "link": "https://www.youtube.com/watch?v=jCG3YgSSqbQ"
-#         },
-#         {
-#             "Bài 3": "How to Change Chords",
-#             "link": "https://www.youtube.com/watch?v=q9ThDTiuyFE"
-#         }
-#     ],
-#     duration = "haha",
-#     schedule_time = "haha",
-#     is_activating = True,
-#     category_id = "5b8949f3fd2b0f1d48f368e3",
-# )
-# new_course.save()
+    new_course = Course(
+    name = "Học guitar",
+    level = "Basic",
+    fee = 600000,
+    content = "học guitar cơ bản",
+    detail =  [
+        {
+            "Bài 1": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 1.",
+            "link": "https://www.youtube.com/watch?v=EDhzQNqo2T0&index=1&list=PL-RYb_OMw7Gf5Y6HfdXrn5s4Y5oXb2zkr" 
+        },
+        {
+            "Bài 2": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 2.",
+            "link": "https://www.youtube.com/watch?v=zGVQ84h1JfI&index=2&list=PL-RYb_OMw7Gf5Y6HfdXrn5s4Y5oXb2zkr"
+        },
 
-# new_category = Category(
-#     name = "Music"
-# )
-# new_category.save()
-
-new_lecturer = Lecturer(
-    name = "Nguyễn Hải Phong",
-    email = "phong@gmail.com",
-    description = ["Sinh viên năm 2 Cao Đẳng Nghệ thuật Hà Nội"],
-    category_id = "5b8949f3fd2b0f1d48f368e3",
-    course_id = "5b894c7afd2b0f15009135f1"
-)
-new_lecturer.save()
+        {
+            "Bài 3": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 3",
+            "link": "https://www.youtube.com/watch?v=x1k-Kepemgk&list=PL-RYb_OMw7Gf5Y6HfdXrn5s4Y5oXb2zkr&index=3"
+        },
+        {
+            "Bài 4": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 4",
+            "link": "https://www.youtube.com/watch?v=x1k-Kepemgk&list=PL-RYb_OMw7Gf5Y6HfdXrn5s4Y5oXb2zkr&index=4"
+        },
+        {
+            "Bài 5": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 5",
+            "link": "https://www.youtube.com/watch?v=x1k-Kepemgk&list=PL-RYb_OMw7Gf5Y6HfdXrn5s4Y5oXb2zkr&index=5"
+        },
+        {
+            "Bài 6": "Hướng dẫn tập guitar (cho người mới bắt đầu)_BÀI 6",
+            "link": "https://www.youtube.com/watch?v=x1k-Kepemgk&list=PL-RYb_OMw7Gf5Y6HfdXrn5s4Y5oXb2zkr&index=6"
+        }
+    ],
+    schedule_time = 2018,
+    is_activating = True
+    )
+    new_course.save()
