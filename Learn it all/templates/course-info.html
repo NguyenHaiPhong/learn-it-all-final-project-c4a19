@@ -14,13 +14,11 @@
     {% include "homepage/nav.html" %}
     {% endif %}
     <section class="callout">
-        <div class="container text-center">
-            <h2 class="mx-auto mb-5">Các khoá học
-                <em>theo cấp độ</em></h2>
-                
-                <a class="btn btn-primary btn-xl btn-lg" href="{{ url_for('course_info' ) }}">Basic</a>
-                <a class="btn btn-primary btn-xl btn-lg" href="#">Advance</a>
-                <a class="btn btn-primary btn-xl btn-lg" href="#">Expert</a>
+        <div class="container text-center bg-cont">
+            <h2 class="mx-auto mb-5">Các khoá học theo cấp độ</h2>
+                <a class="btn btn-primary btn-xl btn-lg" href="{{ url_for('course_detail')}}">Basic</a>
+                <a class="btn btn-primary btn-xl btn-lg" href="{{ url_for('course_detail')}}">Advance</a>
+                <a class="btn btn-primary btn-xl btn-lg" href="{{ url_for('course_detail')}}">Expert</a>
         </div>
         </section>
 </body>

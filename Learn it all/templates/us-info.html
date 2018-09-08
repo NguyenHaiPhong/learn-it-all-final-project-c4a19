@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    {% include 'meta-data.html'%}
+</head>
+<body>
+     <!-- Navigation -->
+    {% if session["customer_signed_in"] == True %}
+    {% include "homepage/customer-signed-in-nav.html" %}
+    {% else %}
+    {% include "homepage/nav.html" %}
+    {% endif %}  
+    
+    <div class="container">
+        <div class="bg-img">
+        </div>
+        <div class="row">
+            <div class="f-sz ">
+                <h1 class="f-bungee text-center">Lean It All</h1>
+                <p class="f-milu">
+                    Learn It All tự hào là "siêu thị" các khóa học trực tuyến ngắn hạn với hàng nghìn khóa học thuộc mọi lĩnh vực, đội ngũ giảng viên chuyên nghiệp, giàu kinh nghiệm và mạng lưới học viên rộng khắp cả nước.
+                    Learn It All - nơi bạn học mọi kĩ năng làm chủ tương lai.
+                </p>
+            </div>
+        </div>
+</body>
+<footer>
+    {% include 'homepage/footer.html'%}
+</footer>
+</html>

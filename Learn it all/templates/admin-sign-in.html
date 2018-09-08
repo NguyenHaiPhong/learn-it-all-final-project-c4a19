@@ -7,14 +7,14 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body id="LoginForm" class="bg-cont">
+<body id="LoginForm">
     {% include "homepage/nav.html" %}
     <div class="container">
         <h1 class="form-heading text-center">Đăng nhập</h1>
             <div class="login-form d-flex justify-content-center">
                 <div class="main-div">
                     <div class="panel">
-                        <h2>Người dùng đăng nhập</h2>
+                        <h2>Admin đăng nhập</h2>
                             <p>Xin nhập tài khoản và mật khẩu</p>
                     </div>
                         <form id="Login" method="POST">
@@ -22,19 +22,10 @@
                                 <input type="text" name="sign-in" class="form-control" id="inputEmail" placeholder="Tên tài khoản">
                             </div>
                             <div class="form-group">
-                                <input type="password"  name="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
                             </div>
-                            {% if error %}
-                                <p class="error text-danger"><strong>Error:</strong> {{error}}
-                            {% endif %}
-                            <div class="forgot">
-                                <a href="#">Quên mật khẩu?</a>
-                            </div>
-                            <div class="d-flex justify-content-around">
-                                <button href="{{ url_for("customer_sign_up")}}" class="btn btn-primary" type="submit">Đăng ký</button>
-                                <br>
-                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
                         </form>
                     </div>
                 </div>

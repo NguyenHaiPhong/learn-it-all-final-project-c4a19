@@ -12,6 +12,11 @@ lia_app.secret_key = "lia"
 def homepage():
     return render_template("homepage.html")
 
+# us info
+@lia_app.route('/us-info')
+def us_info():
+    return  render_template("us-info.html")
+
 #. User sign in
 @lia_app.route("/customer/customer-sign-in", methods = ["GET", "POST"])
 def user_sign_in():

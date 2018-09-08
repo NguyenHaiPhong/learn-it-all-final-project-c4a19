@@ -8,15 +8,16 @@
     {% include "meta-data.html" %}
 </head>
 <body>
-    {% if session["user_signed_in"] == True %}
+    {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <a href="#">Xem danh sách các khoá học</a>
     <br>
-    <a href="#">Xem danh sách người dùng</a>
+    <a href="#">Thể hình - Gym</a>
     <br>
-    <a href="#">Xem danh sách yêu cầu</a>
+    <a href="#">Bóng đá - Football</a>
+    <br>
+    <a href="#">Bóng rổ - Basketball</a>
 </body>
 </html>
