@@ -7,13 +7,14 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body>
+<body class="bg-cont">
     {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <h1>GYM là gì? Tìm hiểu về tập gym, thể hình</h1>
+    <div class="container">
+        <h1 class="text-center">GYM là gì? Tìm hiểu về tập gym, thể hình</h1>
         <p class="f-milu">
             Tập GYM bây giờ đang là 1 phong trào rèn luyện sức khỏe và xây dựng 1 body đẹp, dẻo dai không chỉ ở trong giới trẻ mà cả tầng lớp trung niên cũng đã bắt đầu thay đổi suy nghĩ.
             <br>   
@@ -53,6 +54,10 @@
             Gym bây giờ không chỉ còn là phòng tập, mà bây giờ nó còn có ý nghĩa là 1 lối sống, 
             phong cách sống hiện đại, năng động và khỏe mạnh.
         </p>
-        <a href="{{url_for('esport')}}" class="btn btn-primary"><p>Quay lại E-Sport</p></a>
+        <div class="d-flex justify-content-around">
+            <a href="{{ url_for('sport') }}" class="btn btn-primary"><p>Quay lại Sport</p></a>
+            <a href="{{ url_for('homepage') }}" class="btn btn-primary"><p>Trang chủ</p></a>
+        </div>   
+    </div>
 </body>
 </html>

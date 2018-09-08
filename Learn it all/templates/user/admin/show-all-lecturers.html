@@ -7,18 +7,20 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body>
-    {% if session["user_signed_in"] == True %}
-    {% include "homepage/user-signed-in-nav.html" %}
+<body class="bg-cont">
+    {% if session["admin_signed_in"] == True %}
+    {% include "homepage/admin-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    {% for lecturer in all_lecturers %}
-    <p>Tên: {{ lecturer.name }}</p>
-    <p>Email: {{ lecturer.email }}</p>
-    <a href="{{ url_for('admin_update_lecturer', lecturer_id=lecturer.id ) }}">Chinh sua thong tin</a>
-    <a href="{{ url_for('admin_del_lecturer', lecturer_id=lecturer.id ) }}">Xoa</a>
-    {% endfor %}
+    <div class="container">
+            {% for lecturer in all_lecturers %}
+            <p>Tên: {{ lecturer.name }}</p>
+            <p>Email: {{ lecturer.email }}</p>
+            <a href="{{ url_for('admin_update_lecturer', lecturer_id=lecturer.id ) }}">Chinh sua thong tin</a>
+            <a href="{{ url_for('admin_del_lecturer', lecturer_id=lecturer.id ) }}">Xoa</a>
+            {% endfor %}
+    </div>
 
 </body>
 </html>

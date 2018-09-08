@@ -8,15 +8,21 @@
     {% include "meta-data.html" %}
 </head>
 <body>
-    {% if session["user_signed_in"] == True %}
-    {% include "homepage/customer-signed-in-nav.html" %}
+    {% if session["admin_signed_in"] == True %}
+    {% include "homepage/admin-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <a href="#">Xem danh sách các khoá học</a>
-    <br>
-    <a href="#">Xem danh sách người dùng</a>
-    <br>
-    <a href="#">Xem danh sách yêu cầu</a>
+    <section class="callout">
+            <div class="container text-center">
+                <h2 class="mx-auto mb-5">Xin chào quản trị viên</h2>
+            </div>
+            <div class="d-flex flex-column justify-content-around align-items-center">
+                <a class="my-3 btn btn-primary btn-xl btn-lg" href="{{ url_for('admin_show_all_courses') }}">Xem danh sách các khoá học</a>
+                <a class="my-3 btn btn-primary btn-xl btn-lg" href="{{ url_for('admin_show_all_customers') }}">Xem danh sách người dùng</a>
+                <a class="my-3 btn btn-primary btn-xl btn-lg" href="{{ url_for('admin_show_all_lecturers') }}">Xem danh sách giảng viên</a>
+                <a class="my-3 btn btn-primary btn-xl btn-lg" href="{{ url_for('admin_show_all_orders') }}">Xem danh sach yêu cầu</a>
+            </div>
+    </section>
 </body>
 </html>

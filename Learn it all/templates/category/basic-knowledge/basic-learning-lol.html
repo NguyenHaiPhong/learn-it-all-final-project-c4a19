@@ -8,9 +8,13 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     {%include 'meta-data.html'%}
-    {%include 'homepage/nav.html' %}
 </head>
 <body class="bg-cont">
+    {% if session["customer_signed_in"] == True %}
+    {% include "homepage/customer-signed-in-nav.html" %}
+    {% else %}
+    {% include "homepage/nav.html" %}
+    {% endif %}
     <div class="d-flex justify-content-center"><img src="/static/image/Esport/Liên Minh Huyền Thoại/lol cover.jpg" alt=""></div>
     <div class="container">
         <h2>Cách chơi</h2>

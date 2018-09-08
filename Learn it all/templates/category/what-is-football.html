@@ -7,13 +7,14 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body>
+<body class="bg-cont">
     {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <h1>Tìm hiểu về bóng đá</h1>
+    <div class="container">
+        <h1 class="text-center">Tìm hiểu về bóng đá</h1>
         <h2>Giới thiệu</h2>
             <p>
                 Bóng đá hay Túc cầu là môn thể thao đồng đội được chơi giữa hai đội với nhau, mỗi đội có 11 cầu thủ trên sân. Trò chơi này dùng một 
@@ -44,6 +45,11 @@
                 theo bất cứ hướng nào trên sân, trừ trường hợp cầu thủ rơi vào thế việt vị thì không thể nhận bóng. Dựa vào các quy tắc cơ 
                 bản này, cầu thủ thường dùng chân để thực hiện các động tác kỹ thuật như rê bóng, lừa bóng, chuyền bóng cho đồng đội, sút bóng, 
                 với mục đích chính là tìm cách đưa bóng vào khung thành đối phương và ngăn không cho đối phương đưa bóng vào khung thành đội nhà. Cầu thủ hai đội có thể va chạm nhau thông qua các pha tranh bóng, tắc bóng nhưng tuyệt đối không được phạm những lỗi ghi trong luật như chuồi bóng từ phía sau, đẩy người, tiểu xảo. Điều khiển trận đấu là tổ trọng tài bao gồm một trọng tài chính và hai trọng tài biên, trọng tài chính sử dụng một chiếc còi cùng hai loại thẻ, thẻ vàng và thẻ đỏ, và có trách nhiệm bắt đầu, kết thúc hoặc tạm dừng trận đấu. Một trận đấu bóng đá thông thường có hai hiệp, mỗi hiệp 45 phút với khoảng thời gian 15 phút nghỉ giữa hai hiệp.
-            </p>
+            </p>    
+            <div class="d-flex justify-content-around">
+                <a href="{{ url_for('sport') }}" class="btn btn-primary"><p>Quay lại Sport</p></a>
+                <a href="{{ url_for('homepage') }}" class="btn btn-primary"><p>Trang chủ</p></a>
+            </div>                       
+    </div>
 </body>
 </html>

@@ -14,10 +14,10 @@
     {% include "homepage/nav.html" %}
     {% endif %}
     <br>
-    <a href="#">Thể hình - Gym</a>
+    <a href="{{ url_for('gym') }}">Thể hình - Gym</a>
     <br>
-    <a href="#">Bóng đá - Football</a>
+    <a href="{{ url_for('football') }}">Bóng đá - Football</a>
     <br>
-    <a href="#">Bóng rổ - Basketball</a>
+    <a href="{{ url_for('basketball') }}">Bóng rổ - Basketball</a>
 </body>
 </html>

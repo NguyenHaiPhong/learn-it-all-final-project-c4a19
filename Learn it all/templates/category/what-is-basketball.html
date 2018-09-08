@@ -7,13 +7,14 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body>
+<body class="bg-cont">
     {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <h1>Bóng rổ</h1>
+    <div class="container">
+        <h1 class="text-center">Bóng rổ</h1>
         <h2>Giới thiệu</h2>
             <p>
                 Bóng rổ là môn thể thao thi đấu đối kháng trực tiếp giữa 2 đội, mỗi đội có năm người trên sân. Mục đích của trận đấu là nhằm 
@@ -32,6 +33,11 @@
                 Điều kiện để hình thành môn mới này là phải được chơi trong nhà thể dục, phải giới hạn bởi nhiều luật lệ nhưng đơn giản và 
                 dễ hiểu, không được dùng que gậy vì dễ gây nguy hiểm và không được thô bạo hay có những động tác truy cản theo kiểu môn bóng 
                 đá Mỹ. Do đó, ông đã chọn quả bóng đá và sử dụng tay để chuyền, bắt và ném.
-            </p>
+            </p>        
+            <div class="d-flex justify-content-around">
+                <a href="{{ url_for('sport') }}" class="btn btn-primary"><p>Quay lại Sport</p></a>
+                <a href="{{ url_for('homepage') }}" class="btn btn-primary"><p>Trang chủ</p></a>
+            </div>               
+    </div>
 </body>
 </html>
