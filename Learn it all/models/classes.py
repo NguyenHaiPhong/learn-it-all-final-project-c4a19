@@ -3,7 +3,8 @@ from datetime import datetime
 
 class User(Document):
     name = StringField()
-    email = StringField(required=True)
+    email = StringField()
+    profile_pic = StringField()
     phone_number = StringField()
     sign_in = StringField(required=True, unique=True)
     password = StringField(required=True)
@@ -12,11 +13,15 @@ class User(Document):
 
 class Category(Document):
     name = StringField()
+    thumbnail = StringField()
+    is_activating = BooleanField(default=True)
 
 class Course(Document):
     name = StringField(required=True)
     level = StringField()
     fee = IntField(required=True)
+    thumbnail = StringField()
+    description = StringField()
     detail = ListField()
     duration = StringField()
     schedule_time = StringField()
@@ -24,13 +29,15 @@ class Course(Document):
     category_id = ReferenceField(Category)
 
 class Lecturer(Document):
-    name = StringField(required=True)
-    email = StringField(required=True)
+    name = StringField()
+    email = StringField()
+    profile_pic = StringField()
     height = IntField()
     weight = IntField()
     body_fat = IntField()
     phone_number = StringField()
     description = ListField()
+    is_activating = BooleanField(default=True)
     category_id = ReferenceField(Category)
     course_id = ReferenceField(Course)
 

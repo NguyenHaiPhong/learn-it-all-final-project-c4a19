@@ -13,14 +13,13 @@
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <section class="callout">
-        <div class="container text-center">
-            <h2 class="mx-auto mb-5">Đăng ký khóa học
-                <em>dành riêng cho bạn</em></h2>
-                {% for category in all_categories %}
-                <a class="btn btn-primary btn-xl btn-lg" href="#">{{ category.name }}</a>
-                {% endfor %}
-        </div>
-        </section>
+    {% for course in all_courses %}
+    <p>Tên khoá học: {{ course.name }}</p>
+    <p>Mức độ: {{ course.level }}</p>
+    <p>Học phí: {{ course.fee }}</p>
+    <p>Chi tiết: {{ course.detail }}</p>
+    <p>Lịch học: {{ course.schedule_time }}</p>
+    <hr>
+    {% endfor %}
 </body>
 </html>
