@@ -13,12 +13,104 @@
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
+    <h1 class="mt-4 text-center">Thông tin các khoá học</h1>
     {% for course in all_courses %}
-    <p>Tên khoá học: {{ course.name }}</p>
-    <p>Mức độ: {{ course.level }}</p>
-    <p>Học phí: {{ course.fee }}</p>
-    <p>Chi tiết: {{ course.detail }}</p>
-    <p>Lịch học: {{ course.schedule_time }}</p>
+    <div class="mt-4 container bootstrap snippet">
+            <div class="panel-body inf-content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img alt="" style="width:500px; height:500px;" title="" class="img-circle img-thumbnail isTooltip" src="{{ course.thumbnail }}" 
+                        data-original-title="Usuario"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-0 table-responsive">
+                        <table class="table table-condensed table-responsive table-user-information">
+                            <tbody>
+                                <tr>    
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-user text-primary"></span>    
+                                            Tên khoá học                                                
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        {{ course.name }}     
+                                    </td>
+                                </tr>
+                                <tr>        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-cloud text-primary"></span>  
+                                            Mức độ                                                
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        {{ course.level }}  
+                                    </td>
+                                </tr>
+                                <tr>        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                                Học phí                                                
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        {{ course.fee }} 
+                                    </td>
+                                </tr>
+                                <tr>        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                                Mô tả chi tiết                                                
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        {{ course.description }} 
+                                    </td>
+                                </tr>
+                                <tr>        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                                Các video bài học                                                
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        {{ course.detail }} 
+                                    </td>
+                                </tr>
+                                <tr>        
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                                Available                                                
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        {{ "Yes" if course.is_activating == True else "No" }} 
+                                    </td>
+                                    </tr>       
+                            </tbody>
+                        </table>
+                        </div>
+                        <br>                   
+                    </div>
+                </div>
+            </div>
+    </div>
+    <br>
+    <div class="mb-2 container d-flex justify-content-center">
+        <button class="btn btn-text-primary">
+                <a href="#">Chỉnh sửa thông tin</a>  
+        </button>
+    </div>
+    <div class="container d-flex justify-content-center">
+            <button class="btn btn-text-primary">
+                    <a href="#">Ngưng khoá học</a>  
+            </button>
+    </div>
     <hr>
     {% endfor %}
 </body>
