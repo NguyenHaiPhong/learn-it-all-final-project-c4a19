@@ -39,7 +39,7 @@ class Lecturer(Document):
     description = ListField()
     is_activating = BooleanField(default=True)
     category_id = ReferenceField(Category)
-    course_id = ReferenceField(Course)
+    course_id = ListField(ReferenceField(Course))
 
 class Order(Document):
     customer_id = ReferenceField(User)

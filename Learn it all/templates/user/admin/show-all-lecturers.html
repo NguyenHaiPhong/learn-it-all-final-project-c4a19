@@ -8,8 +8,8 @@
     {% include "meta-data.html" %}
 </head>
 <body>
-    {% if session["user_signed_in"] == True %}
-    {% include "homepage/user-signed-in-nav.html" %}
+    {% if session["admin_signed_in"] == True %}
+    {% include "homepage/admin-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}

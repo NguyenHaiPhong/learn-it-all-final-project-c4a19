@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Learn it all</title>
-    {% include "meta-data.html" %}
 </head>
 <body>
-    {% if session["admin_signed_in"] == True %}
-    {% include "homepage/admin-signed-in-nav.html" %}
+    {% if session["customer_signed_in"] == True %}
+    {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    {% for customer in all_customers %}
     <p>Tên: {{ customer.name }}</p>
-    <p>Email: {{ customer.email }}</p>
+    <p>Video:</p>
+    {% for order in all_orders %}
+    {{ order.course_id.detail }}
     {% endfor %}
 </body>
 </html>

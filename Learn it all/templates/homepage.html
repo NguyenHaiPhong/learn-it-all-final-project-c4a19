@@ -25,12 +25,15 @@
   <!-- Custom CSS -->
   <link href="../static/css/stylish-portfolio.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/stylish-portfolio.css">
+  {% include "meta-data.html" %}
 </head>
 <body id="page-top">
 
     <!-- Navigation -->
-  {% if session["user_signed_in"] == True %}
-  {% include "homepage/user-signed-in-nav.html" %}
+  {% if session["admin_signed_in"] == True %}
+  {% include "homepage/admin-signed-in-nav.html" %}
+  {% elif session["customer_signed_in"] == True %}
+  {% include "homepage/customer-signed-in-nav.html" %}
   {% else %}
   {% include "homepage/nav.html" %}
   {% endif %}
@@ -50,56 +53,56 @@
     <div class="overlay"></div>
   </header>
 
-    <!-- Services -->
-    <section class="content-section bg-primary text-white text-center" id="services">
-      <div class="container">
-        <div class="content-section-heading">
-          <h3 class="text-secondary mb-0">Sản phẩm</h3>
-          <h2 class="mb-5">Những khóa học năng khiếu chất lượng nhất</h2>
+<!-- Services -->
+<section class="content-section bg-primary text-white text-center" id="services">
+    <div class="container">
+      <div class="content-section-heading">
+        <h3 class="text-secondary mb-0">Sản phẩm</h3>
+        <h2 class="mb-5">Những khóa học năng khiếu chất lượng nhất</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-screen-smartphone"></i>
+          </span>
+          <h4>
+            <strong>Nội dung chọn lọc</strong>
+          </h4>
+          <p class="text-faded mb-0">Tổng hợp kiến thức căn bản nhất</p>
         </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-            <span class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-screen-smartphone"></i>
-            </span>
-            <h4>
-              <strong>Nội dung chọn lọc</strong>
-            </h4>
-            <p class="text-faded mb-0">Tổng hợp kiến thức căn bản nhất</p>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-            <span class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-pencil"></i>
-            </span>
-            <h4>
-              <strong>Giảng viên có tiếng</strong>
-            </h4>
-            <p class="text-faded mb-0">Giảng viên được đánh giá cao</p>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-            <span class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-like"></i>
-            </span>
-            <h4>
-              <strong>Linh hoạt</strong>
-            </h4>
-            <p class="text-faded mb-0">Học bất cứ giờ nào, bất cứ nơi đâu!</p>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <span class="service-icon rounded-circle mx-auto mb-3">
-              <i class="icon-mustache"></i>
-            </span>
-            <h4>
-              <strong>Tư vấn nhiệt tình</strong>
-            </h4>
-            <p class="text-faded mb-0">Giải đáp thắc mắc bất cứ lúc nào</p>
-          </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-pencil"></i>
+          </span>
+          <h4>
+            <strong>Giảng viên có tiếng</strong>
+          </h4>
+          <p class="text-faded mb-0">Giảng viên được đánh giá cao</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-like"></i>
+          </span>
+          <h4>
+            <strong>Linh hoạt</strong>
+          </h4>
+          <p class="text-faded mb-0">Học bất cứ giờ nào, bất cứ nơi đâu!</p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-mustache"></i>
+          </span>
+          <h4>
+            <strong>Tư vấn nhiệt tình</strong>
+          </h4>
+          <p class="text-faded mb-0">Giải đáp thắc mắc bất cứ lúc nào</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Callout -->
-      <section class="callout">
+      <!-- <section class="callout">
         <div class="container text-center">
         <h2 class="mx-auto mb-5">Đăng ký khóa học
           <em>dành riêng cho bạn</em></h2>
@@ -109,8 +112,8 @@
       </div>
     </section>
 
-    <!-- Portfolio -->
-    <section class="content-section" id="portfolio">
+    <!- Portfolio -->
+    <!-- <section class="content-section" id="portfolio">
       <div class="container">
         <div class="content-section-heading text-center">
           <h3 class="text-secondary mb-0">Portfolio</h3>
@@ -164,7 +167,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --> 
 
     <!-- Call to Action -->
     <!-- <section class="content-section bg-primary text-white">

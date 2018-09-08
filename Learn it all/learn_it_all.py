@@ -13,12 +13,14 @@ def homepage():
     return render_template("homepage.html")
 
 #. User sign in
-@lia_app.route("/customer/customer-sign-in", methods = ["GET", "POST"])
-def user_sign_in():
+@lia_app.route("/user/user-sign-in/<url_redirect>", methods = ["GET", "POST"])
+def user_sign_in(url_redirect):
     error = None
     if request.method == "GET":  
-        if "user_signed_in" in session:
-            return redirect(url_for("homepage"))
+        if "admin_signed_in" in session:
+            return redirect(url_for("admin_page"))
+        elif "customer_signed_in" in session:
+            return redirect(url_for(str(url_redirect)))
         else:
             return render_template("user/user-sign-in.html")
     elif request.method == "POST":
@@ -27,14 +29,16 @@ def user_sign_in():
         password = form["password"]
         all_users = User.objects(sign_in__exact = sign_in, 
         password__exact = password)
-        if len(all_users) != 0:
+        if len(all_users) != 0: 
                 user_id = all_users[0].id
-                session["user_signed_in"] = True
-                session["user_signed_in_id"] = str(user_id)
                 if all_users[0].is_admin:
+                    session["admin_signed_in"] = True
+                    session["admin_signed_in_id"] = str(user_id)
                     return redirect(url_for("admin_page"))
                 else:
-                    return redirect(url_for("homepage"))
+                    session["customer_signed_in"] = True
+                    session["customer_signed_in_id"] = str(user_id)
+                    return redirect(url_for(str(url_redirect)))
         elif len(all_users) == 0:
             flash("Wrong username or password")
             error = 'Sai Tài Khoản'
@@ -44,7 +48,7 @@ def user_sign_in():
 #. Admin page
 @lia_app.route("/user/admin")
 def admin_page():
-    if "user_signed_in" in session:
+    if "admin_signed_in" in session:
         user_id = session["user_signed_in_id"]
         user = User.objects.with_id(user_id)
         if user.is_admin:
@@ -57,7 +61,7 @@ def admin_page():
 #. Show all lecturers
 @lia_app.route("/user/admin/show-all-lecturers")
 def admin_show_all_lecturers():
-    if "user_signed_in" in session:
+    if "admin_signed_in" in session:
         user_id = session["user_signed_in_id"]
         user = User.objects.with_id(user_id)
         if user.is_admin:
@@ -70,7 +74,7 @@ def admin_show_all_lecturers():
 #. Show all customers
 @lia_app.route("/user/admin/show-all-customers")
 def admin_show_all_customers():
-    if "user_signed_in" in session:
+    if "admin_signed_in" in session:
         user_id = session["user_signed_in_id"]
         user = User.objects.with_id(user_id)
         if user.is_admin:
@@ -83,12 +87,12 @@ def admin_show_all_customers():
 #. Show all orders
 @lia_app.route("/user/admin/show-all-orders")
 def admin_show_all_orders():
-    if "user_signed_in" in session:
+    if "admin_signed_in" in session:
         user_id = session["user_signed_in_id"]
         user = User.objects.with_id(user_id)
         if user.is_admin:
             all_orders = Order.objects()
-            return render_template("orders-page.html", 
+            return render_template("show-all-orders.html", 
             all_orders = all_orders)
         else:
             return redirect(url_for("homepage"))
@@ -98,7 +102,7 @@ def admin_show_all_orders():
 #Show all courses
 @lia_app.route("/user/admin/show-all-courses")
 def admin_show_all_courses():
-    if "user_signed_in" in session:
+    if "admin_signed_in" in session:
         use_id = session["user_signed_in_id"]
         user = User.objects.with_id(use_id)
         if user.is_admin:
@@ -114,7 +118,7 @@ def admin_show_all_courses():
 @lia_app.route("/user/admin/update-lecturer/<lecturer_id>", methods = ["GET", "POST"])
 def admin_update_lecturer(lecturer_id):
     if request.method == "GET":
-        if "user_signed_in" in session:
+        if "admin_signed_in" in session:
             use_id = session["user_signed_in_id"]
             user = User.objects.with_id(use_id)
             if user.is_admin:
@@ -130,29 +134,24 @@ def admin_update_lecturer(lecturer_id):
         weight = form["weight"]
         phone_number = form["phone_number"]
         description = form["description"]
-        is_activating = form["is-activating"]
-        if is_activating == "Còn hoạt động":
-            checking = True
-        elif is_activating == "Không còn hoạt động":
-            checking = False
         update_lecturer = lecturer
         update_lecturer.update(set__name = name, set__email = email,
         set__height = height, set__weight = weight, set__phone_number = phone_number, 
-        set__description = description, set__is_activating = checking)
+        set__description = description)
         return redirect(url_for("admin_show_all_lecturers"))
 
 #. Update course
 @lia_app.route("/user/admin/update-course/<course_id>", methods = ["GET", "POST"])
-def update_course(course_id):
+def admin_update_course(course_id):
     if request.method == "GET":
-        if "user_signed_in" in session:
+        if "admin_signed_in" in session:
             use_id = session["user_signed_in_id"]
             user = User.objects.with_id(use_id)
             if user.is_admin:
                 course = Course.objects.with_id(course_id)
                 return render_template("update-course.html", course = course)
-        else:
-            return redirect(url_for("user_sign_in"))
+            else:
+                return redirect(url_for("user_sign_in"))
     elif request.method == "POST":
         form = request.form     
         name = form["name"]
@@ -162,81 +161,86 @@ def update_course(course_id):
         detail = form["detail"]
         duration = form["duration"]
         schedule_time = form["schedule-time"]
-        is_activating = form["is-activating"]
-        if is_activating == "Còn hoạt động":
-            checking = True
-        elif is_activating == "Không còn hoạt động":
-            checking = False
-        update_course = all_courses[0]
+        course = Course.objects.with_id(course_id)
+        update_course = course
         update_course.update(set__name = name, set__level = level,
         set__fee = fee, set__description = description, set__detail = detail, set__duration = duration, 
-        set__schedule_time = schedule_time, set__is_activating = checking)
+        set__schedule_time = schedule_time)
         return redirect(url_for("admin_show_all_courses"))
 
-#. Delete lecturer
-@lia_app.route("/user/admin/del-lecturer/<lecturer_id>")
-def admin_del_lecturer(lecturer_id):
-    if "user_signed_in" in session:
-        use_id = session["user_signed_in_id"]
-        user = User.objects.with_id(use_id)
-        if user.is_admin:
-            lecturer = Lecturer.objects.with_id(lecturer_id)
-            update_lecturer = lecturer
-            update_lecturer.update(set__is_activating = False)
-            return redirect(url_for("admin_show_all_lecturers"))
-
-#. Accept order
+#. Accept Order
 @lia_app.route("/user/admin/show-all-orders/accept-order/<order_id>")
 def admin_accept_orders(order_id):
-    if "user_signed_in" in session:
+    if "admin_signed_in" in session:
         user_id = session["user_signed_in_id"]
         user = User.objects.with_id(user_id)
         if user.is_admin:
             order = Order.objects.with_id(order_id)
             accept_order = order
             accept_order.update(set__is_purchased = True)
-            return ("Đã phê duyệt.")    
+            return redirect("admin_show_all_orders")    
         else:
             return redirect(url_for("homepage"))        
     else:   
-        return render_template("user/user-sign-in.html")
+        return redirect(url_for("user_sign_in"))
 
-#. Courses detail
-# @lia_app.route("/show-all-courses/courses-info/courses-detail/<course_id>")
-# def course_detail(course_id):
-
-
-#. Course detail
-# @lia_app.route("/show-all-courses/courses-info/course-detail")
-# def course_detail(course_id):
-#     if "user_signed_in" in session:
-#         course = Course.ojects.
-#         return render_template("course-detail.html", course = course)
-#     else:
-#         return redirect(url_for("user_sign_in"))
+#. Delete Lecturer
+@lia_app.route("/user/admin/del-lecturer/<lecturer_id>")
+def admin_del_lecturer(lecturer_id):
+    if "admin_signed_in" in session:
+        user_id = session["user_signed_in_id"]
+        user = User.objects.with_id(user_id)
+        if user.is_admin:
+            lecturer = Lecturer.objects.with_id(lecturer_id)
+            update_lecturer = lecturer
+            update_lecturer.update(set__is_activating = False)
+            all_courses = Course.objects(lecturer_id = lecturer_id)
+            for course in all_courses:
+                course.update(set__is_activating = False)
+            return redirect(url_for("admin_show_all_lecturers"))
+        else:
+            return redirect(url_for("user_sign_in"))
+    
+#. Delete Course
+@lia_app.route("/user/admin/del-course/<course_id>")
+def admin_del_course(course_id):
+    if "admin_signed_in" in session:
+        user_id = session["user_signed_in_id"]
+        user = User.objects.with_id(user_id)
+        if user.is_admin:
+            course = Course.objects.with_id(course_id)
+            course.update(set__is_activating = False)
+            return redirect("admin_show_courses")
+        else:
+            return redirect(url_for("user_sign_in"))
 
 # ---CUSTOMER---
+#. Customer profile
+@lia_app.route("/user/customer-proflie/<customer_id>")
+def customer_profile(customer_id):
+    if "customer_signed_in" in session:
+        customer_id = session["customer_signed_in_id"]
+        customer = User.objects.with_id(customer_id)
+        all_orders = Order.objects(customer_id = customer_id, is_purchased = True)
+        return render_template("user/customer/customer-profile.html", customer = customer, all_orders = all_orders)
+    else:
+        return redirect(url_for("user_sign_in"))
+
 #. Show all categories
 @lia_app.route("/show-all-categories")
 def show_all_categories():
-    all_categories = Category.objects()
-    return render_template("show-all-categories.html", all_categories = all_categories)
+    route = show_all_categories
+    if ["customer_signed_in"] in session:
+        all_categories = Category.objects()
+        return render_template("show-all-categories.html", all_categories = all_categories, route = route)
+    else:
+        return redirect(url_for("user_sign_in"))
 
 #. Courses info
 @lia_app.route("/show-all-courses/courses-info/")
 def course_info():
-    if "user_signed_in" in session:
+    if "customer_signed_in" in session:
         return render_template("course-info.html")
-    else:
-        return redirect(url_for("user_sign_in"))
-
-#. Customer profile 
-@lia_app.route("/user/customer-profile")
-def customer_profile():
-    if "user_signed_in" in session:
-        customer_id = session["user_signed_in_id"]
-        customer = User.objects.with_id(customer_id)
-        return render_template("user/customer-profile.html", customer = customer)
     else:
         return redirect(url_for("user_sign_in"))
 
@@ -245,21 +249,22 @@ def customer_profile():
 def customer_sign_up():
     error = None
     if request.method == "GET":
-        return render_template("user/user-sign-up.html")
+        return render_template("user/customer/customer-sign-up.html")
     elif request.method == "POST":
         form = request.form
         name = form["name"]
         email = form["email"]
-        sign_up = form["sign_up"]
+        sign_up = form["sign-up"]
         password = form["password"]
         new_customer = User(
+            name = name,
             sign_in = sign_up,
             email = email,
             password = password,
         )
         # print(new_customer)
         new_customer.save()
-        return redirect(url_for("customer_sign_in"))
+        return redirect(url_for("user_sign_in"))
 
 #. Detail Course (Customer)
 @lia_app.route("/course/detail/<course_id>")
@@ -277,7 +282,7 @@ def course_detail(course_id):
 #. Order course 
 @lia_app.route("/course/order-course/<course_id>/<customer_id>")
 def order_service(course_id, customer_id):
-    if "user_signed_in" in session:
+    if "customer_signed_in" in session:
         order = Order.objects(course_id = course_id, customer_id = customer_id)
         if len(order) == 0:
             new_order = Order(
@@ -292,11 +297,13 @@ def order_service(course_id, customer_id):
             return ("Bạn đã gửi yêu cầu. Xin chờ xác nhận.")
 
 #. User sign out
-@lia_app.route("/customer/customer-sign-out")
-def customer_sign_out():    
-    if "user_signed_in" in session:
-        del session['user_signed_in']
-        return redirect(url_for('homepage'))
+@lia_app.route("/user/user-sign-out")
+def user_sign_out():    
+    if "admin_signed_in" in session:
+        del session["admin_signed_in"]
+    elif "customer_signed_in" in session: 
+        del session["customer_signed_in"]
+    return redirect(url_for("homepage"))
 
 # ---PAGE---
 @lia_app.route("/esport")
@@ -338,4 +345,15 @@ def music():
 if __name__ == '__main__':
     lia_app.run(debug=True)
 
- 
+#. Courses detail
+# @lia_app.route("/show-all-courses/courses-info/courses-detail/<course_id>")
+# def course_detail(course_id)
+
+#. Course detail
+# @lia_app.route("/show-all-courses/courses-info/course-detail")
+# def course_detail(course_id):
+#     if "user_signed_in" in session:
+#         course = Course.ojects.
+#         return render_template("course-detail.html", course = course)
+#     else:
+#         return redirect(url_for("user_sign_in"))

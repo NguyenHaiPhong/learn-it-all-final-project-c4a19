@@ -69,34 +69,34 @@ mlab.connect()
     # )
     # new_course.save()
 
-# new_lecturer = Lecturer(
-#     name = "Nguyễn Hải Phong",
-#     description = ["Giảng viên Cao Đẳng Nghệ thuật Hà Nội"],
-#     category_id = "5b90986dfd2b0f3ed008a25c",
-#     course_id = "5b90cfedfd2b0f30545288ee"
-# )
-# new_lecturer.save() 
+new_lecturer = Lecturer(
+    name = "Nguyễn Hải Phong",
+    description = ["Giảng viên Cao Đẳng Nghệ thuật Hà Nội"],
+    category_id = "5b90986dfd2b0f3ed008a25c",
+    course_id = ["5b93836bfd2b0f0460b11778","5b9389a6fd2b0f22ac4dd0cf"]
+)
+new_lecturer.save() 
 
-# new_lecturer_1 = Lecturer(
-#     name = "Nguyễn Thành Nam",
-#     description = ["Vô địch ESL One Hamburg 2017", "Á quân DreamLeague Mùa 8", "Vô địch TI 69", "Admin trang Dota 2 Fap Group"],
-#     category_id = "5b90986efd2b0f3ed008a25e",
-#     course_id = "5b90cfedfd2b0f30545288f0"
-# )
-# new_lecturer_1.save()
+new_lecturer_1 = Lecturer(
+    name = "Nguyễn Thành Nam",
+    description = ["Vô địch ESL One Hamburg 2017", "Á quân DreamLeague Mùa 8", "Vô địch TI 69", "Admin trang Dota 2 Fap Group"],
+    category_id = "5b90986efd2b0f3ed008a25e",
+    course_id = ["5b93836afd2b0f0460b11774","5b93836afd2b0f0460b11775","5b9389a6fd2b0f22ac4dd0d1"]
+)
+new_lecturer_1.save()
 
-# new_lecturer_2 = Lecturer(
-#     name = "Nguyễn Nhung",
-#     description = ["Vô địch Thế giới"],
-#     category_id = "5b90986efd2b0f3ed008a25e",
-#     course_id = "5b90cfedfd2b0f30545288ef"
-# )
-# new_lecturer_2.save()
+new_lecturer_2 = Lecturer(
+    name = "Nguyễn Nhung",
+    description = ["Vô địch Thế giới"],
+    category_id = "5b90986efd2b0f3ed008a25e",
+    course_id = ["5b9389a6fd2b0f22ac4dd0d0","5b93836afd2b0f0460b11776","5b93836bfd2b0f0460b11777"]
+)
+new_lecturer_2.save()
 
 
 # new_course = Course(
-#     name = "Học guitar cơ bản",
-#     level = "Cơ bản",
+#     name = "Guitar",
+#     level = "Basic",
 #     fee = 600000,
 #     description = "Học guitar cơ bản",
 #     detail = [
@@ -132,8 +132,8 @@ mlab.connect()
 # new_course.save()
 
 # new_course_1 = Course(
-#     name = "Liên Minh Huyền Thoại nhập môn",
-#     level = "Cơ bản",
+#     name = "League of Legends",
+#     level = "Basic",
 #     fee = 200000,
 #     description = "Học chơi Liên Minh Huyền Thoại cơ bản",
 #     detail = [
@@ -156,8 +156,8 @@ mlab.connect()
 # new_course_1.save()
 
 # new_course_2 = Course(
-#     name = "Dota 2 nhập môn",
-#     level = "Cơ bản",
+#     name = "Dota 2",
+#     level = "Basic",
 #     fee = 322000,
 #     description = "Học chơi Dota 2 cơ bản",
 #     detail = [
@@ -192,8 +192,8 @@ mlab.connect()
 # new_course_2.save()
 
 # new_course_3 = Course(
-#     name = "Học bóng rổ cơ bản",
-#     level = "Cơ bản",
+#     name = "Basketball",
+#     level = "Basic",
 #     fee = 200000,
 #     description = "Học chơi bóng rổ cơ bản",
 #     detail = [
@@ -229,8 +229,8 @@ mlab.connect()
 # new_course_3.save()
 
 # new_course_4 = Course(
-#     name = "Học bóng đá cơ bản",
-#     level = "Cơ bản",
+#     name = "Football",
+#     level = "Basic",
 #     fee = 200000,
 #     description = "Học chơi bóng đá cơ bản",
 #     detail = [
@@ -252,48 +252,9 @@ mlab.connect()
 # )
 # new_course_4.save()
 
-# {
-#     "_id": {
-#         "$oid": "5b8fe7acdb57d20184b77325"
-#     },
-#     "name": "Gym",
-#     "level": "Basic",
-#     "fee": 200000,
-#     "detail": [
-#         {
-#             "Bài 1": "https://www.youtube.com/watch?v=IGhQtwzfmXM&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p"
-#         },
-#         {
-#             "Bài 2": "https://www.youtube.com/watch?v=90AABclAL1M&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p&index=2"
-#         },
-#         {
-#             "Bài 3": "https://www.youtube.com/watch?v=IbrGAh_FdAw&index=3&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p"
-#         },
-#         {
-#             "Bài 4": "https://www.youtube.com/watch?v=RCIys_TFTYo&index=4&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p"
-#         },
-#         {
-#             "Bài 5": "https://www.youtube.com/watch?v=RCIys_TFTYo&index=4&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p"
-#         },
-#         {
-#             "Bài 6": "https://www.youtube.com/watch?v=lqBjWkpMii0&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p&index=5"
-#         },
-#         {
-#             "Bài 7": "https://www.youtube.com/watch?v=lqBjWkpMii0&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p&index=5"
-#         },
-#         {
-#             "Bài 8": "https://www.youtube.com/watch?v=Pcnsx5hI8ys&list=PLTs18vRP6TzfL2roQZUeWi0dteh8AEX-p&index=6"
-#         }
-#     ],
-#     "is_activating": true,
-#     "category_id": {
-#         "$oid": "5b8f8cf8db57d203b8564782"
-#     }
-# }
-
 # new_course_5 = Course(
-#     name = "Pes nhập môn",
-#     level = "Cơ bản",
+#     name = "PES",
+#     level = "Basic",
 #     fee = 200000,
 #     description = "Học chơi PES cơ bản",
 #     detail = [
@@ -319,47 +280,264 @@ mlab.connect()
 # )
 # new_course_5.save()
 
-# {
-#     "_id": {
-#         "$oid": "5b8fe7addb57d20184b77326"
-#     },
-#     "name": "Guitar Advance",
-#     "level": "Advance",
-#     "fee": 400000,
-#     "detail": [
+# new_course = Course(
+#     name = "Dota 2",
+#     level = "Advance",
+#     fee = 500000,
+#     description = "Học chơi Dota 2 nâng cao",
+#     detail = [
 #         {
-#             "Bài 1": "",
-#             "Link": "https://www.youtube.com/watch?v=lut3mV5zkaM&list=PLB0A8BDDB9DBF223A&index=2"
+#             "Bài 1": "How to Harass & DOMINATE Your Midlane!",
+#             "link": "https://www.youtube.com/watch?v=6IU7v9IRXIM"
 #         },
 #         {
-#             "Bài 2": "",
-#             "Link": "https://www.youtube.com/watch?v=ZA5cVPZlkaA&index=3&list=PLB0A8BDDB9DBF223A"
+#             "Bài 2": "Dota 2 - Advanced Carry Tips and Decision Making Tutorial",
+#             "link": "https://www.youtube.com/watch?v=N8c9AyzOplo"
 #         },
 #         {
-#             "Bài 3": "",
-#             "Link": "https://www.youtube.com/watch?v=7meLvrquplQ&index=4&list=PLB0A8BDDB9DBF223A"
+#             "Bài 3": "Ten Advanced DotA 2 Tips/Tricks/Mechanics with eSportsMonies",
+#             "link": "https://www.youtube.com/watch?v=XbA-AKWPgBg"
 #         },
 #         {
-#             "Bài 4": "",
-#             "Link": "https://www.youtube.com/watch?v=o5FbP7HLkTI&list=PLB0A8BDDB9DBF223A&index=5"
-#         },
-#         {
-#             "Bài 5": "",
-#             "Link": "https://www.youtube.com/watch?v=iNU9KVq5ReY&list=PLB0A8BDDB9DBF223A&index=6"
-#         },
-#         {
-#             "Bài 6": "",
-#             "Link": "https://www.youtube.com/watch?v=ehCEoc5PVGM&list=PLB0A8BDDB9DBF223A&index=7"
-#         },
-#         {
-#             "Bài 7": "",
-#             "Link": "https://www.youtube.com/watch?v=1RXP6EkZim4&list=PLB0A8BDDB9DBF223A&index=8"
+#             "Bài 4": "Dota 2 Tips and Tricks advanced and for beginners 2018!",
+#             "link": "https://www.youtube.com/watch?v=S0Dz9GV28tA"
 #         }
 #     ],
-#     "is_activating": true,
-#     "category_id": {
-#         "$oid": "5b8f8cf8db57d203b8564782"
-#     }
-# }
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25e"
+# )
+# new_course.save()
 
+# new_course_1 = Course(
+#     name = "Dota 2",
+#     level = "Expert",
+#     fee = 800000,
+#     description = "Trở thành game thủ Dota 2 chuyên nghiệp",
+#     detail = [
+#         {
+#             "Bài 1": "How to WIN IMPOSSIBLE Offlanes: Top Tips | Dota 2 Guide",
+#             "link": "https://www.youtube.com/watch?v=szLsAFiNkFA"
+#         },
+#         {
+#             "Bài 2": "Drafting the BEST Offlaner! | Dota 2 Guide",
+#             "link": "https://www.youtube.com/watch?v=WpC1PHkiGbY"
+#         },
+#         {
+#             "Bài 3": "Learn Dota 2 - Warding",
+#             "link": "https://www.youtube.com/watch?v=VQn8UCNRc_U"
+#         },
+#         {
+#             "Bài 4": "Dota2: Expert Gameplay Domination",
+#             "link": "https://www.youtube.com/watch?v=Ku5V-7pZ2s4"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25e"
+# )
+# new_course_1.save()
+
+# new_course_2 = Course(
+#     name = "League of Legends",
+#     level = "Advance",
+#     fee = 430000,
+#     description = "League of Legends nâng cao",
+#     detail = [
+#         {
+#             "Bài 1": "Advanced Techniques",
+#             "link": "https://www.youtube.com/watch?v=34n2HlpYIJo"
+#         },
+#         {
+#             "Bài 2": "Trading and Harassing Advance Concepts - League of Legends Academia - Guide/Tutorial",
+#             "link": "https://www.youtube.com/watch?v=grusUReGWEk"
+#         },
+#         {
+#             "Bài 3": "League of Legends Advanced Tutorials - General Lane Setup",
+#             "link": "https://www.youtube.com/watch?v=E_5InHiMj8s"
+#         },
+#         {
+#             "Bài 4": "9 TIPS ON HOW TO WIN YOUR LANE IN LEAGUE OF LEGENDS",
+#             "link": "https://www.youtube.com/watch?v=1L2f7rprnfo"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25e"
+# )
+# new_course_2.save()
+
+# new_course_3 = Course(
+#     name = "League of Legends",
+#     level = "Expert",
+#     fee = 1500000,
+#     description = "Trở thành 1 game thủ Liên Minh chuyên nghiệp",
+#     detail = [
+#         {
+#             "Bài 1": "League of Legends Macro Play 1: The Grid",
+#             "link": "https://www.youtube.com/watch?v=EvbaqRYBXEo"
+#         },
+#         {
+#             "Bài 2": "League of Legends Macro Play 2: Early Game Jungling Part 1",
+#             "link": "https://www.youtube.com/watch?v=HGZtC2sGNFE"
+#         },
+#         {
+#             "Bài 3": "League of Legends Macro Play 3: Early Game Jungling Part 2",
+#             "link": "https://www.youtube.com/watch?v=ByqV0pPXoNU"
+#         },
+#         {
+#             "Bài 4": "League of Legends Macro Play 4: Transitioning from Early to Mid Game",
+#             "link": "https://www.youtube.com/watch?v=QdSQBD9aEhw"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25e"
+# )
+# new_course_3.save()
+
+# new_course_4 = Course(
+#     name = "Guitar",
+#     level = "Expert",
+#     fee = 1000000,
+#     description = "Thành thục các kỹ thuật đánh Guitar",
+#     detail = [
+#         {
+#             "Bài 1": "Modal Progressions For Guitar - Guitar Lesson",
+#             "link": "https://www.youtube.com/watch?v=TZbqqB8lQX0"
+#         },
+#         {
+#             "Bài 2": "Understanding Modal Chord Progressions",
+#             "link": "https://www.youtube.com/watch?v=5r4tDMqzOYA"
+#         },
+#         {
+#             "Bài 3": "How To Write Chord Progressions - Songwriting Basics [Music Theory - Diatonic Chords]",
+#             "link": "https://www.youtube.com/watch?v=M8eItITv8QA"
+#         },
+#         {
+#             "Bài 4": "Deconstructing Diminished Chords - Music Theory for Guitar",
+#             "link": "https://www.youtube.com/watch?v=HQ2pg7D1aks"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986dfd2b0f3ed008a25c"
+# )
+# new_course_4.save()
+
+# new_course_5 = Course(
+#     name = "Gym",
+#     level = "Advance",
+#     fee = 790000,
+#     description = "Các kỹ thuật nâng cao về Gym",
+#     detail = [
+#         {
+#             "Bài 1": "TOP 5 Gym Tips",
+#             "link": "https://www.youtube.com/watch?v=vPKcShZzuPo"
+#         },
+#         {
+#             "Bài 2": "The PROPER Way To Lift Weights (Stop Doing This!)",
+#             "link": "https://www.youtube.com/watch?v=I3zfre75XW0"
+#         },
+#         {
+#             "Bài 3": "7 MUST KNOW Gym Hacks & Tips",
+#             "link": "https://www.youtube.com/watch?v=0fvsTADOA5Y"
+#         },
+#         {
+#             "Bài 4": "3 Common Beginner Workout Mistakes",
+#             "link": "https://www.youtube.com/watch?v=79vqkTk2QzE"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25d"
+# )
+# new_course_5.save()
+
+# new_course_6 = Course(
+#     name = "Gym",
+#     level = "Expert",
+#     fee = 430000,
+#     description = "Thành thạo những kĩ thuật trong thể hình",
+#     detail = [
+#         {
+#             "Bài 1": "6 Muscle Gaining Mistakes (SLOW OR NO GROWTH!!)",
+#             "link": "https://www.youtube.com/watch?v=330Ufcaj1zA"
+#         },
+#         {
+#             "Bài 2": "The Official Bench Press Check List (AVOID MISTAKES!)",
+#             "link": "https://www.youtube.com/watch?v=vthMCtgVtFw"
+#         },
+#         {
+#             "Bài 3": "3 Sets of 12 is KILLING Your Gains!!",
+#             "link": "https://www.youtube.com/watch?v=vKDYfRtfqng"
+#         },
+#         {
+#             "Bài 4": "Chest Workout Tips for Size (HARDGAINER EDITION!)",
+#             "link": "https://www.youtube.com/watch?v=nmsFJHkWkfo"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25d"
+# )
+# new_course_6.save()
+
+# new_course_7 = Course(
+#     name = "Football",
+#     level = "Advance",
+#     fee = 420000,
+#     description = "Các kỹ thuật nâng cao trong bóng đá",
+#     detail = [
+#         {
+#             "Bài 1": "Improve Your Football Fitness - Pre Season Training Camp",
+#             "link": "https://www.youtube.com/watch?v=SkfdOThWeZA"
+#         },
+#         {
+#             "Bài 2": "How to run longer | How to increase stamina and endurance | How to run properly | Soccer Football",
+#             "link": "https://www.youtube.com/watch?v=uE15A4qom20"
+#         },
+#         {
+#             "Bài 3": "Strength Training For Football | Full-Body Gym Workout | You Ask, We Answer",
+#             "link": "https://www.youtube.com/watch?v=Pyd8vSu0AOw"
+#         },
+#         {
+#             "Bài 4": "England Get to Work in the Gym Ahead of Tunisia | Inside Training | World Cup 2018",
+#             "link": "https://www.youtube.com/watch?v=6bFHDttjtEc"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25d"
+# )
+# new_course_7.save()
+
+# new_course_8 = Course(
+#     name = "Football",
+#     level = "Expert",
+#     fee = 900000,
+#     description = "Thành thạo các kỹ năng trong bóng đá",
+#     detail = [
+#         {
+#             "Bài 1": "Individual Football Training",
+#             "link": "https://www.youtube.com/watch?v=IR0Y2DRWJrQ"
+#         },
+#         {
+#             "Bài 2": "How To Warm Up Before A Soccer / Football Game",
+#             "link": "https://www.youtube.com/watch?v=ij57OFjvwpk"
+#         },
+#         {
+#             "Bài 3": "100 Individual Soccer Training Drills",
+#             "link": "https://www.youtube.com/watch?v=z7jP3moQi9c"
+#         },
+#         {
+#             "Bài 4": "How to train on your own | 3 individual football training drills",
+#             "link": "https://www.youtube.com/watch?v=Y8i6QDPQ0v0"
+#         }
+#     ],
+#     schedule_time = "2018",
+#     is_activating = True,
+#     category_id = "5b90986efd2b0f3ed008a25d"
+# )
+# new_course_8.save()
 
