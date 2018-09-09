@@ -7,13 +7,14 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body>
+<body class="bg-cont">
     {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <h1>Luật thi đấu</h1>
+    <div class="container">
+        <h1>Luật thi đấu</h1>
         <h2>Cầu thủ, trang phục và trọng tài</h2>
             <p>
                 Mỗi trận đấu bóng đá bao gồm hai đội, mỗi đội 11 cầu thủ thi đấu chính thức trên sân kể cả 1 thủ môn. Thủ môn là người duy nhất 
@@ -106,5 +107,11 @@
                         Thả bóng: Khi trận đấu bị dừng lại không phải do bóng ra ngoài sân hoặc có cầu thủ bị phạm lỗi (ví dụ có cầu thủ bị chấn thương, có cổ động viên nhảy vào sân). Trọng tài sẽ là người cầm bóng và thả trước sự có mặt của một cầu thủ mỗi đội.
                     </li>
                 </ul>
-            </p>
+            </p>      
+            <div class="d-flex justify-content-around">
+                <a href="{{ url_for('sport') }}"class="btn btn-primary"><p>Quay lại Sport</p></a>
+                <a href="{{ url_for('homepage') }}"class="btn btn-primary"><p>Trang chủ</p></a>
+            </div>                    
+    </div>
+   
 </html>

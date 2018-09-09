@@ -8,13 +8,12 @@
     {% include "page/meta-data.html" %}
 </head>
 <body>
-    {% if session["admin_signed_in"] == True %}
-    {% include "homepage/admin-signed-in-nav.html" %}
+    {% if session["customer_signed_in"] == True %}
+    {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <h1 class="mt-4 text-center">Thông tin các khoá học</h1>
-    {% for course in all_courses %}
+    <h1 class="text-center">Chào mừng bạn đến với khóa học của chúng tôi</h1>
     <div class="mt-4 container bootstrap snippet">
             <div class="panel-body inf-content">
                 <div class="row">
@@ -100,19 +99,15 @@
                 </div>
             </div>
     </div>
-    <br>
     <div class="mb-2 container d-flex justify-content-center">
-        <button class="btn btn-text-primary">
-                <a href="#">Chỉnh sửa thông tin</a>  
-        </button>
-    </div>
-    <div class="container d-flex justify-content-center">
             <button class="btn btn-text-primary">
-                    <a href="#">Ngưng khoá học</a>  
+                {% if course.is_activating == True %}
+                    <a href="{{ url_for('order_service', course_id = course.id, customer_id = session['customer_signed_in_id']) }}">Đăng ký khoá học</a>
+                {% else %}
+                    <p class="text-center">Khoá học hiện không khả dụng.</p>
+                {% endif %}
             </button>
-    </div>
-    <hr>
-    {% endfor %}
+    </div>  
     {% include "homepage/footer.html" %}
 </body>
 </html>

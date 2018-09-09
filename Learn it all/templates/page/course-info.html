@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn it all</title>
+    {% include "page/meta-data.html" %}
+</head>
+<body>
+    {% if session["customer_signed_in"] == True %}
+    {% include "homepage/customer-signed-in-nav.html" %}
+    {% else %}
+    {% include "homepage/nav.html" %}
+    {% endif %}
+    {% include "homepage/carousel.html" %}
+            <div class="container text-center">
+                <h2 class="mt-4 mx-auto mb-4">Chào mừng các bạn đến với các khoá học</h2>
+            </div>
+            <div class="container d-flex flex-wrap">
+                {% for course in all_courses %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top" src="{{ course.thumbnail }}" alt=""></a>
+                            <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ url_for('course_detail', course_id = course.id) }}">{{ course.name }}</a>
+                            </h4>
+                            <h5>{{ course.fee }}</h5>
+                            <p class="card-text">{{ course.description }}</p>
+                            </div>
+                        </div>
+                </div>
+                {% endfor %}
+            </div>     
+    {% include "homepage/footer.html" %}
+</body>
+</html>
+

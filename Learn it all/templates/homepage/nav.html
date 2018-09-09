@@ -9,19 +9,8 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Về chúng tôi<span class="sr-only"></span></a>
-            </li>
-            <!-- <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Danh sách khóa học
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item navbar-dark" href="">Sport</a>
-                    <a class="dropdown-item navbar-dark" href="#">Music</a>
-                    <a class="dropdown-item navbar-dark" href="#">E-sports</a>
-                    <a class="dropdown-item navbar-dark" href="#">Khác</a>
-                </div>
-            </li> -->
+                <a class="nav-link" href="{{url_for('us_info')}}">Về chúng tôi</a>
+            </li>            
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url_for('customer_sign_up') }}">Đăng ký</a>
             </li>

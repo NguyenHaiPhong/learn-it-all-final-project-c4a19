@@ -7,13 +7,14 @@
     <title>Learn it all</title>
     {% include "meta-data.html" %}
 </head>
-<body>
+<body class="bg-cont">
     {% if session["customer_signed_in"] == True %}
     {% include "homepage/customer-signed-in-nav.html" %}
     {% else %}
     {% include "homepage/nav.html" %}
     {% endif %}
-    <h1>Cách chơi bóng rổ</h1>
+    <div class="container">
+        <h1>Cách chơi bóng rổ</h1>
         <p>
             Bóng rổ là môn thể thao đồng đội. Bao gồm có 2 đội chơi với năm cầu thủ, mỗi đội cố gắng ghi điểm bằng
             cách ném một quả bóng qua một vòng cao hơn 10 feet so với mặt đất. Trò chơi ném bóng rổ được chơi trên
@@ -58,6 +59,12 @@
                         </ul>
                     </li>
                 </ul>
-            </p>
+            </p>  
+            <div class="d-flex justify-content-around">
+                <a href="{{ url_for('sport') }}" class="btn btn-primary"><p>Quay lại Sport</p></a>
+                <a href="{{ url_for('homepage') }}" class="btn btn-primary"><p>Trang chủ</p></a>
+            </div>                        
+    </div>
+ 
 </body>
 </html>

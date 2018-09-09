@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Learn it all</title>
-    {% include "meta-data.html" %}
+    {% include "page/meta-data.html" %}
 </head>
 <body>
     {% if session["admin_signed_in"] == True %}
@@ -19,5 +19,6 @@
     <p>{{ order.order_time }}</p>
     <a href="#">Phê duyệt yêu cầu
     {% endfor %}
+    {% include "homepage/footer.html" %}
 </body>
 </html>
